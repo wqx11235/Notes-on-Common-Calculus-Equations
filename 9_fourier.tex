@@ -1,0 +1,284 @@
+\newpage
+
+\section{\huge \textcolor{blue}{傅里叶级数}}
+\subsection{\LARGE 共振}
+\subsubsection{\large 无阻尼}
+下文利用共振引入相应学习点, 更着重于数学形式, 而非物理概念\\
+下先给出输入为$\cos \omega_1 t$方程:
+\[ y'' + \omega_0^2 y = \cos \omega_1 t \]
+\[ (D^2 + \omega_0^2) y = \cos \omega_1 t \]
+复化方程:
+\[ (D^2 + \omega_0^2) \tilde{y} = e^{i \omega_1 t} \]
+\[\tilde{y} = \frac{e^{i \omega_1 t}}{(i \omega_1)^2 + \omega_0^2} = \frac{e^{i \omega_1 t}}{\omega_0^2 - \omega_1^2}\]
+所以响应$y_p$为:
+\[ y_p = Re(\tilde{y}) = \frac{\cos \omega_1 t}{\omega_0^2 - \omega_1^2}\]
+得:\\
+当$\omega_1  \to  \omega_0$时, $y_p \to \infty $, 即
+输入频率越接近物体的固有频率时, 振幅越大.
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf9.1.1.png}
+    \caption{$\omega_1  \to  \omega_0$}
+    \label{fig:cwf9.1.1}
+\end{figure}
+
+若$\omega_1 = \omega_0$
+\[ (D^2 + \omega_0^2) y = \cos \omega_0 t \]
+\[ (D^2 + \omega_0^2) \tilde{y} = e^{i \omega_0 t} \]
+所以 $i \omega_0$是$D^2 + \omega_0^2$的一个单根
+\[ \tilde{y} = \frac{t e^{i \omega_0 t}}{2 i \omega_0} \]
+\[ y_p = Re(\tilde{y}) = \frac{t \sin \omega_0 t}{2 \omega_0} \]
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.6\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf9.1.2.png}
+    \caption{$\omega_1 = \omega_0$}
+    \label{fig:cwf9.1.2}
+\end{figure}
+
+在 $\omega_1 \to \omega_0$时, $0$处的振幅值逐渐增大, 
+在 $\omega_1 = \omega_0$时, 值为$0$, 这之间的变化如何解释?\\
+不是唯一特解, 要知任何满足非齐次方程的解都是一个特解
+\[ (D^2 + \omega_0^2) y = \cos \omega_1 t \]
+在特解上加上通解:
+\[ y =  \frac{\cos \omega_1 t}{\omega_0^2 - \omega_1^2} - \frac{\cos \omega_0 t}{\omega_0^2 - \omega_1^2} \] 
+现对此形式求极限:
+\begin{align*}
+    \lim_{\omega_1 \to \omega_0} \frac{\cos \omega_1 t - \cos \omega_0 t}{\omega_0^2 - \omega_1^2} &= \lim_{\omega_1 \to \omega_0} \frac {-t \sin \omega_1 t}{- 2 \omega_1} \\
+    &= \frac{t \sin \omega_0 t}{2 \omega_0}      
+\end{align*}
+
+得另一形式解, 继续探求联系:\\
+知:
+\[ \cos B - \cos A = 2 \sin \frac{A - B}{2} \sin \frac{A + B}{2} \]
+有:
+\[ \frac{\cos \omega_1 t - \cos \omega_0 t}{\omega_0^2 - \omega_1^2} = \frac{2 \sin \frac{\omega_0 - \omega_1}{2} t \sin \frac{\omega_1 + \omega_0}{2} t}{\omega_0^2 - \omega_1^2} \]
+将$\frac{2 \sin \frac{\omega_0 - \omega_1}{2} t}{\omega_0^2 - \omega_1^2}$视为振幅, $sin \frac{\omega_1 + \omega_0}{2} t$视为基本振荡
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.6\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf9.1.3.png}
+    \caption{联系图}
+    \label{fig:cwf9.1.3}
+\end{figure}
+
+如图:展示了频率变化的曲线关系, 而随$\omega_1 \to \omega_0$ , 振幅值越来越大, 越不过图像最大值,使得图像显示为此图前半部分.
+
+\subsubsection{\large 阻尼}
+仅先作了解, 
+有方程:
+\[ m x'' + c x' + k x = f(t) \]
+\[ x'' + 2 p x' + \omega_0^2 x = f(t) \]
+有频率关系:
+\[ \omega_1^2 = p^2 + \omega_0^2 \]
+若在输入引入新频率:
+\[ y'' + 2 p y' + \omega_0^2 y = \cos \omega t \]
+思考:什么样的输入频率, 才能使响应的振幅最大?
+\[ \omega_r = \sqrt{\omega_0^2 - 2p^2} \]
+
+\subsection{\LARGE 傅里叶级数引入}
+在方程:
+\[ y''  + a y' + b y = f(t) \]
+考虑输入$f(t)$为 $e^{a t}, \sin t, \cos t, \cdots \cdots  $\\
+且任何平常的周期函数, $T = 2 \pi$, 可表示为:
+\[ f(t) = c_0 + \sum_{n = 1}^{\infty} (a_n \cos nt  + b_n \sin nt) \] 
+\begin{align*}
+   \text{输入}  &\to \text{响应}  \\
+   b_n \sin nt  &\to b_n y_n^{s}(t)   \\
+   a_n \cos nt  &\to a_n y_n^{c}(t) \\      
+\end{align*}
+两侧求和得:
+\[ f(t) \to   c + \sum_{n = 1}^{\infty} (a_n y_n^{c}(t) + b_n y_n^{s}(t)) \]
+能如此附带系数相加, 因有叠加原理, 更一般的原因为ODE是线性的.\\
+下继续完善傅里叶级数:\\
+给定周期函数$f(t)$, $  T = 2 \pi $\\
+先考虑正交性, 有下:\\
+若$u(t), v(t), T = 2 \pi, t \in \mathbb{R} $, 
+$u , v$在 $[- \pi ,  \pi]$上正交, 则:
+\[ \int_{- \pi}^{\pi} u(t) v(t) \,dt = 0 \] 
+同时有如下性质:
+\[ \left\{ \sin nt , \cos mt \right\} , n = 1, 2, 3, \cdots \cdots  , m = 0, 1, 2, \cdots \cdots   \] 
+此集合中任意两不同元素均在区间上正交, 除下:
+\[
+\int_{- \pi}^{\pi} \sin^2 nt \,dt = \int_{- \pi}^{\pi} \cos^2 mt \,dt = \pi
+\]
+关于此性质证明有大概如下3种方法:
+\begin{enumerate}
+    \item 三角恒等式变形
+    \item 化为复指数
+    \item ODE本身(推广性强)
+\end{enumerate}
+对此只展示法3:\\
+证明:\\
+假设$m \neq n$, 满足的微分方程为:
+\[ u'' + n^2 u = 0 \]
+取$u_n, v_m$为任意的两个函数, 变形:
+\[ u'' = -n^2 u \]
+作:
+\begin{align*}
+   \int_{- \pi}^{\pi} u_n'' v_m \,dt &= u_n' v_m \vert _{-\pi}^{\pi} - \int_{- \pi}^{\pi} u_n' v_m' \,dt  \\
+    &= - \int_{- \pi}^{\pi} u_n' v_m' \,dt   \\
+    &= - n^2 \int_{- \pi}^{\pi}  u_n v_m \,dt     
+\end{align*}
+其中$u_n' v_m \vert _{-\pi}^{\pi} = 0$ , 证明较为繁琐, 从处先使用, 后续可查阅相应资料, 并同理:
+\[ \int_{- \pi}^{\pi} v_m'' u_n \,dt = - m^2 \int_{- \pi}^{\pi}  v_m u_n \,dt \]
+从中观察, 知$u_n',  v_m'$对称, $u_n, v_m$非对称, 且$m \neq n$, 故:\\
+$u_n, v_m$只能在$[- \pi, \pi]$上正交, 才能使等式成立.\\
+下求傅里叶级数系数:\\
+给定$f(t), t \in [- \pi, \pi] , T = 2 \pi $
+
+\begin{align*}
+                                     f(t) &= \cdots + a_k \cos kt +  \cdots  + a_n \cos nt +  \cdots  \\
+    \int_{- \pi}^{\pi}  f(t) \cos nt \,dt &= \cdots   + \int_{- \pi}^{\pi} a_k \cos kt  \cos nt \,dt + \cdots + \int_{- \pi}^{\pi} a_n \cos^2 nt  \,dt   \\
+                                          &= a_n \pi
+\end{align*}
+解得:
+\begin{align*}
+   a_n  &= \frac{1}{\pi} \int_{- \pi}^{\pi}  f(t) \cos nt \,dt \hspace*{1em} , n = 1, 2, 3, \cdots  \\
+   b_n  &= \frac{1}{\pi} \int_{- \pi}^{\pi}  f(t) \sin nt \,dt \hspace*{1em} , n = 1, 2, 3, \cdots     
+\end{align*}
+求常数项:
+\begin{align*}
+                            f(t)  &= c_0 + \cdots  +  a_n \cos nt +  \cdots  \\
+    \int_{- \pi}^{\pi}  f(t) \,dt &= 2\pi c_0  + \cdots + \int_{- \pi}^{\pi} a_n \cos nt  \,dt   \\
+                             c_0  &= \frac{1}{2\pi} \int_{- \pi}^{\pi}  f(t) \,dt
+\end{align*}
+为了让公式统一, 令$c_0 = a_0$, 即:
+\[ a_n = \frac{1}{\pi} \int_{- \pi}^{\pi}  f(t)  \,dt \]
+
+
+\subsection{\LARGE 傅里叶级数拓展}
+整理前文:
+\[ f(t) = \frac{a_0}{2} + \sum_{n = 1}^{\infty} (a_n \cos nt  + b_n \sin nt) \]
+\begin{align*}
+   a_n  &= \frac{1}{\pi} \int_{- \pi}^{\pi}  f(t) \cos nt \,dt \hspace*{1em} , n = 1, 2, 3, \cdots  \\
+   b_n  &= \frac{1}{\pi} \int_{- \pi}^{\pi}  f(t) \sin nt \,dt \hspace*{1em} , n = 1, 2, 3, \cdots     
+\end{align*}
+有:给定$a_n, b_n$ , $f(t)$确定,即\\
+一个函数$f(t)$不能有两个不同的傅里叶级数\\
+下针对傅里叶级数的研究有些拓展方向, 如下:
+\subsubsection{\large 精简计算}
+此方向针对奇偶函数:\\
+若$f(t)$为偶函数, 有$f(-t) = f(t) $, 则:\\
+$f(t)$的傅里叶级数只包括 cos 项
+\[ f(t) = \frac{a_0}{2} + \sum_{n = 1}^{\infty} a_n \cos nt  , \hspace*{1em} (b_n = 0)\]
+证明:
+\[ f(t) = \frac{a_0}{2} + \sum_{n = 1}^{\infty} (a_n \cos nt  + b_n \sin nt)  \]
+\[ f(-t) = \frac{a_0}{2} + \sum_{n = 1}^{\infty} (a_n \cos nt  - b_n \sin nt) \]
+$ \because \hspace*{1em} f(t) = f(-t) $\\
+通过对比系数
+\[ \therefore \hspace*{1em} b_n = 0 \]
+同, 若$f(t)$为奇函数, 则 $a_n = 0$, 即
+\[ f(t) =  \sum_{n = 1}^{\infty} b_n \sin nt  \]
+进一步对积分化简:\\
+若$f(t)$为偶函数, 则 $f(t)\cos nt $ 同为偶函数
+\[ a_n  = \frac{2}{\pi} \int_{0}^{\pi}  f(t) \cos nt \,dt ,\hspace*{1em} (b_n = 0)  \]
+若$f(t)$为奇函数, 则 $f(t)\sin nt $ 为偶函数
+\[ b_n  = \frac{2}{\pi} \int_{0}^{\pi}  f(t) \sin nt \,dt  \]
+
+\subsubsection{\large 补充}
+在分析中了解:\\
+泰勒级数是用来分析一个函数靠近某点是的表现, \\
+傅里叶级数是用来分析一个函数在某区间内的表现.\\
+下再介绍一个重要定理:\\
+若$f$是一个连续函数, 且在$t_0$点附近连续, 则:\\
+傅里叶级数是收敛的, 且
+$f(t)$的值为它的傅里叶级数在$t_0$处的和;\\
+若$t_0$是跳跃性不连续点, 那么\\
+傅里叶级数相加是收敛的, 且为跳跃处的中点
+
+\subsubsection{\large 拓展周期}
+现设: $T = 2 L$, 对坐标轴伸缩变化:
+\[ f(t) = \frac{a_0}{2} + \sum_{n = 1}^{\infty} (a_n \cos \frac{n \pi}{L}t  + b_n \sin \frac{n \pi}{L}t )  \]
+并整理上述结论并运用:\\
+若$f(t)$为偶函数, 则:
+\[ a_n  = \frac{2}{\pi} \int_{0}^{2L}  f(t) \cos \frac{n \pi}{L}t \,dt ,\hspace*{1em} (b_n = 0)  \]
+
+\subsubsection{\large 拓展非周期函数}
+如题, 对于有限区间的函数均可使用傅里叶级数表达\\
+需对本体区间扩展, 将整个区间嵌入一个周期内\\
+eg: $y(t) = t^2$, $t \in [0, L] $
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.4\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf9.2.1.png}
+    \caption{原区间图}
+    \label{fig:cwf9.2.1}
+\end{figure}
+
+现在对此进行奇偶拓展, 如图:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf9.2.2.png}
+    \caption{奇偶拓展图}
+    \label{fig:cwf9.2.2}
+\end{figure}
+
+如上选取一种拓展后, 按正常步骤处理即可.
+\subsection{\LARGE 利用傅里叶级数求特解}
+设一方波: $f(t)$ , 非奇非偶, $L = 1$, 如下:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf9.2.3.png}
+    \caption{方波图}
+    \label{fig:cwf9.2.3}
+\end{figure}
+
+为更方便求解, 进行必要变形, 将其向下偏移$\frac{1}{2}$, 
+此时为奇函数, 记为 $s(t)$:
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf9.2.4.png}
+    \caption{平移图}
+    \label{fig:cwf9.2.4}
+\end{figure}
+
+为数值方便计算, 将轴伸缩变化 $u = \pi t$
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf9.2.5.png}
+    \caption{轴伸缩图}
+    \label{fig:cwf9.2.5}
+\end{figure}
+
+计算如下:
+\[ g(u) = \frac{4}{\pi} \sum_{n = odd}^{\infty}\frac{\sin n u}{n} \]
+\[ f(t) = s(t) + \frac{1}{2} \]
+\[ s(t) = \frac{1}{2} g(u) \]
+\[ f(t) = \frac{1}{2} g(u) + \frac{1}{2} \]
+\[ \therefore  \hspace*{1em} f(t) = \frac{1}{2} + \frac{2}{\pi} \sum_{n = odd}^{\infty}\frac{\sin n \pi t}{n} \]
+到现在, 为了解决二阶线性常系数方程
+\[ x'' + \omega^2 x = f(t) \]
+求$x_p$\\
+若$f(t) = \left\{
+                \begin{aligned}
+                \sin \omega t  \\
+                \cos \omega t
+                \end{aligned}
+\right.$ , 解为:
+\[x_p =\frac{\left\{
+                \begin{aligned}
+                 \sin \omega x  \\
+                 \cos \omega x
+                \end{aligned}
+                \right.}{\omega_0^2 - \omega^2} 
+\]
+即:
+\[ f(t) = \frac{a_0}{2} + \sum_{n = 1}^{\infty} (a_n \cos \omega_n t  + b_n \sin \omega_n t )  \]
+其中$\omega_n = \frac{n \pi}{L}, T = 2L$\\
+解:
+\[
+x_p = \frac{a_0}{2 \omega_0^2} + \sum_{n = 1}^{\infty} ( \frac{a_n \cos \omega_n t}{\omega_0^2 - \omega^2} + \frac{b_n \sin \omega_n t}{\omega_0^2 - \omega^2})
+\]
+若输入$f(t)$为上文中的方波, 解得
+
+\[
+x_p = \frac{1}{2 \omega_0^2} + \frac{2}{\pi} \sum_{n = odd}^{\infty} \frac{\sin n \pi t}{n (\omega_0^2 - (n \pi)^2)}
+\]
+
+下再介绍一代换法: \\
+将傅里叶级数逐项微分, 得系数\\
+假设$f(t)$ 解的形式为:
+\[ x_p = c_0 + \sum_{n = 1}^{\infty} c_n \sin n \pi t  \]
+\[ x_p'' = - \sum_{n = 1}^{\infty} c_n (n \pi)^2 \sin n \pi t  \]
+代入ODE, 
+\[ x_p'' + \omega^2 x_p = f(t) \]
+通过系数等价, 即求得$c_n$.

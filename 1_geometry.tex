@@ -1,0 +1,120 @@
+
+\newpage  % 开始新的一页放置正文内容
+\section{\huge \textcolor{blue}{几何视角下的微分方程}}
+\begin{center}
+\huge GEOM VIEW OF ODS'S
+\end{center}
+
+\begin{center}
+\Large Analyze(解析) \hspace{3cm} Geometrically(几何)
+$y' = (x, y) \xleftrightarrow{\hspace{3cm}} \text{方向场 (direction field)}$
+$y_1 :solution \xleftrightarrow{\hspace{2cm}} \text{积分曲线 (Integral curves)}$
+\end{center}
+\vspace{1cm}
+\subsection{\LARGE 方向场}
+\large direction field 
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=1\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwjffc1.png}
+    \caption{方向场示意图}
+    \label{fig:direction-field}
+\end{figure}
+
+\newpage
+\sethlcolor{yellow}
+\text{有如下关系}\\
+$y'(x) \text{ is solution to } y'=f(x,y)\Longleftrightarrow \text{graph of y'(x) is an Int curves}$
+$y_1'(x)=f(x,y_1(x))\hspace{2.2cm} \Longleftrightarrow {\hspace{2cm}} \text{shape of } y_1'(x)$\\[1cm]
+简单来说，即在解析法中写出微分方程等价于几何法中画出方向场,而解析法中求出微分方程的解等价于几何法中作出积分曲线图像.
+\vspace{1cm}
+\subsection{\LARGE DRAWINGQ DIRECTION FIELD}
+
+\subsubsection{\large 计算机}
+
+\begin{enumerate}  %使用 enumerate 环境实现编号列表对齐
+\item Pick(x,y)   等距
+\item $f(x,y) \longrightarrow \text{求值}$
+\item 画 $f(x,y)$ 线素(可以理解为斜率)
+\end{enumerate}
+
+\subsubsection{\large 人}
+\begin{enumerate}  %使用 enumerate 环境实现编号列表对齐
+\item 取固定斜率 C
+\item 满足方程 $f(x,y)=C$  ，画出方程\\
+level curve(等值线) or isocline(等斜线)\\
+在微积分中称此方程所描绘曲线为等值线,而在ODS中称为等斜线.
+\item slope C\\
+画出等斜线(一般用虚线表示，因为等斜线并非为方程解)，并在等斜线上画出一定量的值为c的线素
+
+\newpage
+\ 下用一例题演示作图流程
+
+\end{enumerate}
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.7\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc2.png}
+    \caption{例题1}
+    \label{fig:eg1}
+\end{figure}
+
+\ 由方向场画得积分曲线图，显然得一同心圆族，即可得积分曲线方程为
+{\Large
+\begin{equation}
+x^2 + y^2 = C^2
+\end{equation}
+}
+\ 为更一般得了解几何绘图，继续给出以下例子
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.8\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc3.png}
+    \caption{例题2}
+    \label{fig:eg2}
+\end{figure}
+
+\newpage
+\ 观察例题2中夹在 C=0 和 C=2 等斜线之间的区域，可以发现积分曲线在此区域由方向场的引导逐渐靠近 C=1 的等斜线，且无法逃逸.\\
+%isoclines(等斜线)
+对2条积分曲线不相交现象，进行探讨并给出如下原理
+
+\subsection{\Large 积分曲线作图原理}
+\subsubsection{\large 积分曲线作图原理 1}
+%使用 enumerate 环境实现编号列表对齐
+\begin{enumerate}
+\Large
+\item \colorbox[RGB]{200,225,240}{两条积分曲线不相交}
+\item \colorbox[RGB]{200,225,240}{存在与唯一性定理(不相切)}
+\end{enumerate}
+
+对1: 如果相交则会在交点产生2个线素，产生矛盾\\
+\hspace*{2em}对2: 相对于1更不显然，表述为2条积分曲线不仅不能相交，甚至连相切
+都无法做到，为 $ y'=(x,y)  $  有且仅有一个解.  有, 即存在性,仅有,即唯一性.\\
+其中y为连续函数保证存在性成立，
+那要如何保证唯一性的假设? \ 即y的偏导必须连续(均在$(x_0,y_0)$附近成立)\\[0.5cm]
+在了解曲线积分作图原理后，再回头看例题2\\
+\hspace*{2em}积分曲线由方向场的引导逐渐靠近 C=1 时得到的等斜线，曲线无法逃逸出直线 y=x 附近
+且直线两侧的积分曲线不能交叉、接触，则我们可以用几何方法猜测 y=x 为微分方程的一个解析解.\\[0.5cm]
+
+\newpage
+ 由上述原理再次思考前例题后，我们再看下例题
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=1\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc4.png}
+    \caption{例题3}
+    \label{fig:eg3}
+\end{figure}
+
+\ 现观察例题3，解在除了x=0 直线外的平面上，下观察此直线,
+P点为方程所生产的所有直线交点，即在点P上唯一性不成立，再看直线 x=0 外其他点，
+无直线经过，即存在性不成立.\\
+那么我们发现，此解法不满足原理，产生矛盾，那问题会在哪?\\
+我们对方程一开始的变形做出更改，以至于符合标准形式:
+{\Large
+\begin{equation}
+\frac{dy}{dx} = \frac{1-y}{x}
+\end{equation}
+}
+\ 此时我们即发现方程在 x=0 处无定义，即存在及唯一性定理不保证在y轴(x=0)上成立，则说明上述并不矛盾.\\
+同时此例题也提醒我们在利用原理时要注意方程是否满足标准形式，再去分析.

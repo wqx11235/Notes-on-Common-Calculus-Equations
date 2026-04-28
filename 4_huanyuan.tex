@@ -1,0 +1,67 @@
+\newpage
+
+\section{\huge \textcolor{blue}{一阶方程换元法}}
+
+\subsection{\LARGE 尺度变换}
+在具体说明一阶方程换元法之前, 
+先介绍尺度变换(即通过改变坐标来改变坐标轴的尺度)\\
+令
+\[ x_1 = \frac{x}{a}  , y_1 = \frac{y}{b} \]
+作用:
+\begin{enumerate}
+    \item 改变单位
+    \item 让变量无量纲化
+    \item 减少或简化方程中的常数
+\end{enumerate}
+
+\subsection{\LARGE 伯努利方程}
+下以伯努利方程为例:
+{\Large
+\begin{equation}
+y' = p(x) y + q(x) y^n \hspace*{1em} 
+(n \neq 0 \hspace*{0.5em}and\hspace*{0.5em} 1)
+\end{equation}
+}
+同除$y_n$:
+\[ \frac{y'}{y^n} = \frac{p(x)}{y^{n-1}} + q(x)  \]
+
+记 $v = 1/y^{n-1}$, 得 $v' = (1-n) y' / y^n$
+{\Large \[ \therefore \hspace*{1em} \frac{v'}{1-n} = p(x) v + q(x)  \] }
+后化为标准线性方程即可解.
+
+\subsection{\LARGE 一阶齐次ODE}
+关于齐次的关键就是变形找到(或通过换元创造)如下形似:
+{\Large
+\begin{equation}
+y' = F(y/x) 
+\end{equation}
+}
+eg: $y' = \frac{x^2 y}{x^3 + y^3} = \frac{\frac{y}{x}}{1 + (\frac{y}{x})^3} $\\
+通过观察发现齐次方程的不变性质:\\
+\hspace*{2em}缩放变换保持一致(即同比例改变各轴尺度)
+\[ x \rightarrow a x_1 , y \rightarrow a y_1  \]
+\[ dx \rightarrow a dx_1 , dy \rightarrow a dy_1  \]
+
+{\Large \[ \therefore \hspace*{1em} \frac{dy_1}{dx_1} = F(y/x) = \frac{dy}{dx}  \] }
+下对方程$y' = F(y/x) $处理:\\
+令 $z = y/x $, 而为了避免对除法求导导致计算量过大, 
+故\\
+变形为 $y = z x$, 有 $y' = z' x + z $
+\[ \therefore \hspace*{1em} z' x + z = F(z)  \]
+\[ \therefore \hspace*{1em} x \frac{dz}{dx} = F(z) - z \]
+下给出一个例子:\\
+已知: $y' = tan(\alpha + \pi /4)$ , $tan(\alpha) = \frac{y}{x}$, 求原曲线轨迹\\
+解:
+\[ y' = tan(\alpha + \pi /4 ) = \frac{tan(\alpha) + tan(\pi /4)}{1 - tan(\alpha) tan(\pi /4)} \]
+\[ y' = \frac{\frac{y}{x} + 1}{1 - \frac{y}{x} }  \]
+令$z = \frac{y}{x} $, 得 $y' = z' x + z$
+\[ \therefore \hspace*{1em} z' x + z = \frac{z + 1}{1 - z}  \]
+\[ x \frac{dz}{dx} = \frac{z + 1}{1 - z} - z = \frac{1 + z^2}{1-z}\]
+\[ \frac{1 - z}{1 + z^2} dz = \frac{dx}{x} \]
+对两侧同时积分:
+\[ \therefore \hspace*{1em} arctan(z) - \frac{1}{2} ln(1 + z^2) = ln(x) + C  \]
+\[ \therefore \hspace*{1em} arctan(\frac{y}{x}) = ln(\sqrt{x^2 + y^2} ) + C  \]
+极坐标转化:\\
+令$r = \sqrt{x^2 + y^2} $, $ \theta = arctan(\frac{y}{x}) $
+\[ \theta = ln(r) + c\]
+\[ \therefore \hspace*{1em} r = c_1 e^{\theta}  \]

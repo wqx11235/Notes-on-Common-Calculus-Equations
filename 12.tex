@@ -1,0 +1,240 @@
+\newpage
+
+\section{\huge \textcolor{blue}{\hspace*{0.2em}线性非齐次微分方程组}}
+\subsection{\LARGE \hspace*{0.1em}常系数非齐次微分方程组}
+\subsubsection{\large 定理及性质}
+标准形式:
+\[\vec{X'} =   A \vec{X} \]
+定理A:\\
+上标准方程组的通解为:
+\[\vec{x} = c_1 \vec{x}_1 + c_2 \vec{x}_2  \]
+其中: $\vec{x}_1 ,\vec{x}_2$是两个线性无关解.\\[1em]
+定理B:\\
+朗斯基行列式
+\[ w(\vec{x}_1 ,\vec{x}_2) = 
+\begin{vmatrix}
+    \vec{x}_1 \vec{x}_2
+\end{vmatrix}
+\]
+\[ w(t) = 
+\begin{cases}
+    \equiv 0 \hspace*{1em} \text{if $\vec{x}_1 ,\vec{x}_2$ 相关} \\
+    \ne 0 \hspace*{1em} \text{if $\vec{x}_1 ,\vec{x}_2$ 无关}
+\end{cases}
+\]
+同时所对应的矩阵也称为方程组的基本矩阵
+\[\vec{X'} =   A \vec{X} \]
+\[ \bar{X} =
+\begin{bmatrix}
+    \vec{x}_1  \vec{x}_2
+\end{bmatrix}
+\hspace*{1em} \vec{x}_1 ,\vec{x}_2 \text{ 无关解}
+\]
+性质1: $\left\lvert\bar{X}\right\rvert  \ne 0$ \\
+性质2:
+\begin{align*}
+\vec{X'} = A \vec{X} &\Leftrightarrow \left[ \vec{x}_1'  \vec{x}_2'\right]   \\
+    &= A \left[ \vec{x}_1  \vec{x}_2\right]  \\
+    &= \left[ A \vec{x}_1  A\vec{x}_2\right] \\
+    &\Leftrightarrow   \vec{x}_1'= A \vec{x}_1 , \vec{x}_2'= A \vec{x}_2
+\end{align*}
+现将上述定理及性质应用于解非齐次方程组上
+\[
+\begin{cases}
+    x' = ax + by + r_1(t) \\
+    y' = cx + dy + r_2(t)
+\end{cases}
+\]
+\[\vec{X'} = A \vec{X} + \vec{r}(t) \]
+定理C: $\vec{X'}$通解
+\[ \vec{X} = \vec{X}_c + \vec{X}_p \]
+其中: $\vec{X}_c$为对应齐次方程组通解, $\vec{X}_p$为方程组特解.\\
+$\vec{X}_c$在前文已作相应讨论, 下重点讨论$\vec{X}_p$\\[1em]
+利用参数变分法:
+\begin{align*}
+    \vec{X}_p &= v_1(t) \vec{x}_1 + v_2(t) \vec{x}_2 \\
+    \vec{X}_p &= \bar{X}  \vec{V} \\
+    \vec{X}_p' &= A \vec{X}_p + \vec{r} 
+\end{align*}
+\[
+    \bar{X}'\vec{V} + \bar{X}\vec{V}'=A \vec{X}\vec{V} + \vec{r}
+\]
+$\because \bar{X}'= A \vec{X}$
+\begin{align*}
+    \bar{X}\vec{V}' &= \vec{r} \\
+    \vec{V}' &= \bar{X}^{-1} \vec{r}
+\end{align*}
+$\bar{X}$的逆矩阵存在, 需行列式$\neq 0$
+\begin{align*}
+    \vec{V} &=  \int \bar{X}^{-1} \vec{r} dt \\
+    \vec{X}_p &= \bar{X} \int \bar{X}^{-1} \vec{r} dt
+\end{align*}
+
+\newpage
+\subsection{\LARGE \hspace*{0.1em}矩阵指数及应用}
+\subsubsection{\large 定理及性质}
+上文提到A的基本矩阵性质\\
+现考虑: 基本矩阵不唯一, 解的选取仅需线性无关\\
+方程通解:
+\[ \vec{x} = c_1 \vec{x}_1 + c_2 \vec{x}_2 \]
+\[ \vec{X} = \mathbb{X} \vec{C} =
+\begin{bmatrix}
+     \vec{x}_1  \vec{x}_2
+\end{bmatrix}\cdot 
+\begin{bmatrix}
+    c_1 \\
+    c_2
+\end{bmatrix}
+\]
+\[
+\begin{bmatrix}
+    \mathbb{X} \vec{c}_1  & \mathbb{X}\vec{c}_2
+\end{bmatrix}
+=
+\mathbb{X}
+\begin{bmatrix}
+    \vec{c}_1  & \vec{c}_2
+\end{bmatrix}
+=
+\mathbb{X} \vec{C} \hspace*{1em} \left\lvert C\right\rvert \neq 0
+\]
+通解公式:\\
+对一阶微分方程:
+\[ x' = a x \hspace*{1em} , x = c e^{at} \]
+即猜测在解方程组通解也会利用指数函数性质, 为此先对矩阵指数定义:\\
+借用无穷级数的指数函数定义:
+\begin{align*}
+e^{at} &= 1 + at + \frac{a^2 t^2}{2!} + \frac{a^3 t^3}{3!} + \cdots    \\
+\frac{de^{at}}{dt} &= a + a^2 t + \frac{a^3}{2!} t^2 + \cdots \\
+    &=a (1 + at + \frac{a^2 t^2}{2!} + \frac{a^3 t^3}{3!} + \cdots)  \\
+    &=a e^{at}
+\end{align*}
+$\Downarrow $猜测
+\[ \vec{X}' = A \vec{X} \hspace*{1em}  \vec{X} = e^{At} \]
+矩阵指数的定义:
+\[ e^{At} = I + At + \frac{A^2 t^2}{2!} + \frac{A^3 t^3}{3!} + \cdots \]
+验证是否为基本矩阵:\\
+代入方程$\vec{X}' = A \vec{X} $, 显然成立\\
+同时满足$\left\lvert X(0)\right\rvert  = \left\lvert I\right\rvert = 1 \neq 0$\\
+而矩阵指数并不好计算, 下举一个能计算的例子:\\[1em]
+eg:
+\[
+\begin{cases}
+    x' = y \\
+    y' = x
+\end{cases}
+\hspace*{1em}
+\vec{X}' =
+\begin{bmatrix}
+    0 & 1 \\
+    1 & 0
+\end{bmatrix}
+\hspace*{1em}
+A =
+\begin{bmatrix}
+    0 & 1 \\
+    1 & 0
+\end{bmatrix}
+\]
+\begin{align*}
+A &=
+\begin{bmatrix}
+    0 & 1 \\
+    1 & 0
+\end{bmatrix}\\
+A^2 &=
+\begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+\end{bmatrix} = I \\ 
+A^3 &= A^2 A = I A = A \\
+A^4 &= A^3 A = A A = I \\
+\cdots \cdots
+\end{align*}
+即
+\begin{align*}
+    e^{At} &= I + At + \frac{A^2 t^2}{2!} + \frac{A^3 t^3}{3!} + \cdots \\
+    &= I + 
+\begin{bmatrix}
+    0 & 1 \\
+    1 & 0
+\end{bmatrix}t +I \frac{t^2}{2!}  + 
+\begin{bmatrix}
+    0 & 1 \\
+    1 & 0
+\end{bmatrix}\frac{t^3}{3!}  + \cdots \\
+&=
+\begin{bmatrix}
+    1+\frac{t^2}{2!} + \cdots & t + \frac{t^3}{3!} + \cdots \\
+    t + \frac{t^3}{3!} + \cdots & 1+\frac{t^2}{2!} + \cdots
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+    \cosh t & \sinh t \\
+    \sinh t & \cosh t
+\end{bmatrix}
+\end{align*}
+即求解.
+\newpage
+现探求矩阵指数对解初值问题的便利:\\
+初值问题?
+\[
+\begin{cases}
+    \vec{X}' = A \vec{X} \\
+    \vec{X}(0) = \vec{X}_0
+\end{cases}
+\Longrightarrow \vec{X}(t)
+\]
+通解:
+\begin{align*}
+    \vec{X} &= e^{At} \vec{C} \\
+    \vec{X}(0) &= e^{A0} \vec{C} \\
+    &= I \vec{C} \\
+    &= \vec{X}_0 \\
+    \therefore \hspace*{0.5em} \vec{X} &= e^{At} \vec{X}_0
+\end{align*}
+\textcolor{red}{原则性警告}
+\[ e^{A+B} \neq e^{A} e^{B} \]
+若成立, 当且仅当 $AB = BA$ (可交换矩阵) \\
+满足下3种情况之一即为可交换矩阵:
+\begin{enumerate}
+    \item $A = C I =
+\begin{bmatrix}
+    c & 0 \\
+    0 & c
+\end{bmatrix}$
+    \item $B=-A$
+    \item $B=A^{-1}$
+\end{enumerate}
+对$B=-A$:
+\begin{align*}
+    e^{A-A} &= e^A e^{-A}\\
+    I &= e^A e^{-A} \\
+    (e^A)^{-1} &= e^{-A}
+\end{align*}
+\newpage
+计算$e^{At}$的各方法:
+\begin{enumerate}
+    \item 级数(限制太大)
+    \item 对称矩阵
+    \item $\mathbb{X} \cdot \mathbb{X}(0)^{-1} = e^{At}$
+\end{enumerate}
+其中关于对称矩阵采用分解处理:
+\[
+\begin{bmatrix}
+    a & b \\
+    b & a
+\end{bmatrix} = 
+\begin{bmatrix}
+    a & 0 \\
+    0 & a
+\end{bmatrix} +
+\begin{bmatrix}
+    0 & b \\
+    b & 0
+\end{bmatrix}
+\]
+
+
+\subsection{\LARGE \hspace*{0.1em}方程组解耦}
+\subsubsection{\large 定理及性质}

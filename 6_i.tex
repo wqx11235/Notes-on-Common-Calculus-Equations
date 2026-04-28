@@ -1,0 +1,48 @@
+\newpage
+
+\section{\huge \textcolor{blue}{复数和复指数}} 
+在解微分方程中常用到复数知识, 故在此补充部分: 
+\subsection{\LARGE 复数的极坐标形式}
+\begin{align*}
+a + bi &= r(\cos \theta + i \sin \theta) \\
+       &= r(\cos \theta + i \sin \theta) \\
+\therefore   e^{i \theta} &= \cos \theta + i \sin \theta       
+\end{align*}
+下介绍微分方程中常用的复指数运算:
+\begin{enumerate}
+    \item $e^x e^y = e^{x+y} \Longrightarrow  e^{i \theta_1} e^{i \theta_2} = e^{i (\theta_1 + \theta_2)} $
+    \item $\frac{d e^{a t}}{dt} = a e^{a t} \Longrightarrow \frac{d e^{i \theta}}{d \theta} = i e^{i \theta} $
+\end{enumerate}
+下对第一条简单证明:
+\begin{align*}
+e^{i \theta_1} e^{i \theta_2} &= (\cos \theta_1 + i \sin \theta_1) (\cos \theta_2 + i \sin \theta_2) \\
+       &= (\cos \theta_1 \cos \theta_2 - \sin \theta_1 \sin \theta_2) + i (\sin \theta_1 \cos \theta_2 + \cos \theta_1 \sin \theta_2)\\
+       &= \cos (\theta_1 + \theta_2) + i \sin (\theta_1 + \theta_2)\\
+       &= e^{i (\theta_1 + \theta_2)}      
+\end{align*}
+
+第二条同理展开逐项求导即可.
+\[ \alpha = r e^{i \theta} \]
+记: $r = |\alpha | : \text{模},\hspace*{0.5em}  \theta = arg(\alpha) : \text{辐角}$
+\[ r_1 e^{i \theta_1} r_2 e^{i \theta_2} = r_1 r_2 e^{i (\theta_1 + \theta_2)} \]
+几何上:两个复数相乘, 模为两个复数的模相乘, 辐角为两个复数的辐角之和\\
+下举一个例子说明复数在微分方程的作用:\\
+eg:求
+\[ u = \int e^{-x} \cos x dx \]
+记: $Re(u) $为函数的实部, $Im(u) $为函数的虚部
+\begin{align*}
+e^{-x} \cos x &= Re(e^{-x} e^{i x})\\
+             &= Re(e^{x (i - 1)} )\\
+Re(\int e^{x (i - 1)} dx )&=Re( \frac{-1-i}{2} e^{-x}  (\cos x + i \sin x))\\
+\therefore  u &= \frac{e^{-x}}{2} (-\cos x + \sin x)
+\end{align*}
+
+最后补充一点:\\
+在复数域中, 1的n次方根总有n个\\
+eg: $ \sqrt[5]{1} $根的分布如下(用几何含义旋转即可理解)
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc6.1.1.png}
+    \caption{5次根}
+    \label{fig:cwffc6.1.1}
+\end{figure}

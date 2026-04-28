@@ -1,0 +1,89 @@
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 1}}\huge \textcolor {blue}{几何视角下的微分方程}}{6}{section.1}%
+\contentsline {subsection}{\numberline {\Large 1.1}\LARGE 方向场}{6}{subsection.1.1}%
+\contentsline {subsection}{\numberline {\Large 1.2}\LARGE DRAWINGQ DIRECTION FIELD}{7}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {\large 1.2.1}\large 计算机}{7}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {\large 1.2.2}\large 人}{7}{subsubsection.1.2.2}%
+\contentsline {subsection}{\numberline {\Large 1.3}\Large 积分曲线作图原理}{9}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {\large 1.3.1}\large 积分曲线作图原理 1}{9}{subsubsection.1.3.1}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 2}}\huge \textcolor {blue}{Euler数值方法及推广}}{11}{section.2}%
+\contentsline {subsection}{\numberline {\Large 2.1}\LARGE Euler数值法}{11}{subsection.2.1}%
+\contentsline {subsection}{\numberline {\Large 2.2}\LARGE 误差分析}{14}{subsection.2.2}%
+\contentsline {subsection}{\numberline {\Large 2.3}\LARGE 改进Euler数值方法}{15}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {\large 2.3.1}\large 取更小的步长h}{15}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {\large 2.3.2}\large 对k改进}{16}{subsubsection.2.3.2}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 3}}\huge \textcolor {blue}{一阶线性ODE}}{18}{section.3}%
+\contentsline {subsection}{\numberline {\Large 3.1}\LARGE 一阶线性ODE标准方程}{18}{subsection.3.1}%
+\contentsline {subsection}{\numberline {\Large 3.2}\LARGE 温度模型}{19}{subsection.3.2}%
+\contentsline {subsection}{\numberline {\Large 3.3}\LARGE 解一阶线性方程}{19}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {\large 3.3.1}\large 积分因子法}{20}{subsubsection.3.3.1}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 4}}\huge \textcolor {blue}{一阶方程换元法}}{22}{section.4}%
+\contentsline {subsection}{\numberline {\Large 4.1}\LARGE 尺度变换}{22}{subsection.4.1}%
+\contentsline {subsection}{\numberline {\Large 4.2}\LARGE 伯努利方程}{22}{subsection.4.2}%
+\contentsline {subsection}{\numberline {\Large 4.3}\LARGE 一阶齐次ODE}{23}{subsection.4.3}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 5}}\huge \textcolor {blue}{一阶自治方程}}{25}{section.5}%
+\contentsline {subsection}{\numberline {\Large 5.1}\LARGE 一阶自治方程}{25}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {\large 5.1.1}\large 方向场}{25}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {\large 5.1.2}\large 临界点}{26}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {\large 5.1.3}\large 逻辑斯蒂方程}{28}{subsubsection.5.1.3}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 6}}\huge \textcolor {blue}{复数和复指数}}{30}{section.6}%
+\contentsline {subsection}{\numberline {\Large 6.1}\LARGE 复数的极坐标形式}{30}{subsection.6.1}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 7}}\huge \textcolor {blue}{一阶常系数线性方程}}{32}{section.7}%
+\contentsline {subsection}{\numberline {\Large 7.1}\large 输入-响应}{32}{subsection.7.1}%
+\contentsline {subsubsection}{\numberline {\large 7.1.1}\large 概念}{32}{subsubsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {\large 7.1.2}\large 叠加原理}{33}{subsubsection.7.1.2}%
+\contentsline {subsection}{\numberline {\Large 7.2}\large 三角实例}{33}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {\large 7.2.1}\large 极坐标转化}{33}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {\large 7.2.2}\large 笛卡尔坐标转化}{34}{subsubsection.7.2.2}%
+\contentsline {subsection}{\numberline {\Large 7.3}\large 基本线性方程}{35}{subsection.7.3}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 8}}\huge \textcolor {blue}{二阶线性微分方程}}{36}{section.8}%
+\contentsline {subsection}{\numberline {\Large 8.1}\LARGE 二阶常系数线性微分方程}{36}{subsection.8.1}%
+\contentsline {subsubsection}{\numberline {\large 8.1.1}\large 阻尼运动}{36}{subsubsection.8.1.1}%
+\contentsline {subsubsection}{\numberline {\large 8.1.2}\large ODE特征方程}{37}{subsubsection.8.1.2}%
+\contentsline {subsection}{\numberline {\Large 8.2}\LARGE 二阶齐次线性微分方程}{40}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {\large 8.2.1}\large 解理论}{40}{subsubsection.8.2.1}%
+\contentsline {subsubsection}{\numberline {\large 8.2.2}\large 存在和唯一性定理}{43}{subsubsection.8.2.2}%
+\contentsline {subsection}{\numberline {\Large 8.3}\LARGE 二阶非齐次线性微分方程}{44}{subsection.8.3}%
+\contentsline {subsubsection}{\numberline {\large 8.3.1}\large 解结构}{44}{subsubsection.8.3.1}%
+\contentsline {subsection}{\numberline {\Large 8.4}\LARGE 非齐次 ODE}{47}{subsection.8.4}%
+\contentsline {subsubsection}{\numberline {\large 8.4.1}\large 指数型非齐次项}{47}{subsubsection.8.4.1}%
+\contentsline {subsubsection}{\numberline {\large 8.4.2}\large 指数输入定理}{47}{subsubsection.8.4.2}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 9}}\huge \textcolor {blue}{傅里叶级数}}{50}{section.9}%
+\contentsline {subsection}{\numberline {\Large 9.1}\LARGE 共振}{50}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {\large 9.1.1}\large 无阻尼}{50}{subsubsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {\large 9.1.2}\large 阻尼}{52}{subsubsection.9.1.2}%
+\contentsline {subsection}{\numberline {\Large 9.2}\LARGE 傅里叶级数引入}{53}{subsection.9.2}%
+\contentsline {subsection}{\numberline {\Large 9.3}\LARGE 傅里叶级数拓展}{56}{subsection.9.3}%
+\contentsline {subsubsection}{\numberline {\large 9.3.1}\large 精简计算}{56}{subsubsection.9.3.1}%
+\contentsline {subsubsection}{\numberline {\large 9.3.2}\large 补充}{57}{subsubsection.9.3.2}%
+\contentsline {subsubsection}{\numberline {\large 9.3.3}\large 拓展周期}{57}{subsubsection.9.3.3}%
+\contentsline {subsubsection}{\numberline {\large 9.3.4}\large 拓展非周期函数}{58}{subsubsection.9.3.4}%
+\contentsline {subsection}{\numberline {\Large 9.4}\LARGE 利用傅里叶级数求特解}{58}{subsection.9.4}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 10}}\huge \textcolor {blue}{\hspace *{0.2em}拉普拉斯}}{62}{section.10}%
+\contentsline {subsection}{\numberline {\Large 10.1}\LARGE \hspace *{0.1em}拉普拉斯变换引入}{62}{subsection.10.1}%
+\contentsline {subsubsection}{\numberline {\large 10.1.1}\large 幂级数求和类似体}{62}{subsubsection.10.1.1}%
+\contentsline {subsubsection}{\numberline {\large 10.1.2}\large \hspace *{0.1em}拉普拉斯变换线性定律}{63}{subsubsection.10.1.2}%
+\contentsline {subsubsection}{\numberline {\large 10.1.3}\large \hspace *{0.1em}各函数拉普拉斯变换及其规律}{63}{subsubsection.10.1.3}%
+\contentsline {subsection}{\numberline {\Large 10.2}\LARGE \hspace *{0.1em}拉氏变换求线性ODE}{65}{subsection.10.2}%
+\contentsline {subsubsection}{\numberline {\large 10.2.1}\large 拉氏变换存在条件}{65}{subsubsection.10.2.1}%
+\contentsline {subsubsection}{\numberline {\large 10.2.2}\large 拉氏变换求线性ODE}{66}{subsubsection.10.2.2}%
+\contentsline {subsection}{\numberline {\Large 10.3}\LARGE \hspace *{0.1em}卷积}{68}{subsection.10.3}%
+\contentsline {subsection}{\numberline {\Large 10.4}\LARGE \hspace *{0.1em}拉氏变换处理不连续函数}{71}{subsection.10.4}%
+\contentsline {subsection}{\numberline {\Large 10.5}\LARGE \hspace *{0.1em}狄拉克函数}{75}{subsection.10.5}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 11}}\huge \textcolor {blue}{\hspace *{0.2em}线性齐次微分方程组}}{78}{section.11}%
+\contentsline {subsection}{\numberline {\Large 11.1}\LARGE \hspace *{0.1em}一阶常微分方程组及几何解释}{78}{subsection.11.1}%
+\contentsline {subsubsection}{\numberline {\large 11.1.1}\large 线性方程组}{78}{subsubsection.11.1.1}%
+\contentsline {subsubsection}{\numberline {\large 11.1.2}\large 几何解释}{80}{subsubsection.11.1.2}%
+\contentsline {subsection}{\numberline {\Large 11.2}\LARGE \hspace *{0.1em}常系数齐次方程组}{81}{subsection.11.2}%
+\contentsline {subsubsection}{\numberline {\large 11.2.1}\large 尝试解-法-矩阵形式}{81}{subsubsection.11.2.1}%
+\contentsline {subsubsection}{\numberline {\large 11.2.2}\large 矩阵形式一般化}{83}{subsubsection.11.2.2}%
+\contentsline {subsubsection}{\numberline {\large 11.2.3}\large 矩阵形式简化}{84}{subsubsection.11.2.3}%
+\contentsline {subsubsection}{\numberline {\large 11.2.4}\large 重根分析}{85}{subsubsection.11.2.4}%
+\contentsline {subsubsection}{\numberline {\large 11.2.5}\large 复特征根}{87}{subsubsection.11.2.5}%
+\contentsline {subsection}{\numberline {\Large 11.3}\LARGE \hspace *{0.1em}2X2 常系数齐次线性方程组作图 }{88}{subsection.11.3}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 12}}\huge \textcolor {blue}{\hspace *{0.2em}线性非齐次微分方程组}}{91}{section.12}%
+\contentsline {subsection}{\numberline {\Large 12.1}\LARGE \hspace *{0.1em}常系数非齐次微分方程组}{91}{subsection.12.1}%
+\contentsline {subsubsection}{\numberline {\large 12.1.1}\large 定理及性质}{91}{subsubsection.12.1.1}%
+\contentsline {subsection}{\numberline {\Large 12.2}\LARGE \hspace *{0.1em}矩阵指数及应用}{93}{subsection.12.2}%
+\contentsline {subsubsection}{\numberline {\large 12.2.1}\large 定理及性质}{93}{subsubsection.12.2.1}%
+\contentsline {subsection}{\numberline {\Large 12.3}\LARGE \hspace *{0.1em}方程组解耦}{96}{subsection.12.3}%
+\contentsline {subsubsection}{\numberline {\large 12.3.1}\large 定理及性质}{96}{subsubsection.12.3.1}%

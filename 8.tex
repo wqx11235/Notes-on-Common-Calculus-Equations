@@ -1,0 +1,446 @@
+\newpage
+
+\section{\huge \textcolor{blue}{二阶线性微分方程}}
+\subsection{\LARGE 二阶常系数线性微分方程}
+对与二阶常系数线性微分方程:
+\[ y'' + A y' + B y = 0 \]
+先给出通解:
+\[ y = c_1 y_1 + c_2 y_2 \]
+
+$ y_1, y_2 $ 为通解的2个解, 
+即可将一次求解任务拆解为两个单次求解任务
+\subsubsection{\large 阻尼运动}
+下以简单阻尼运动模型为例:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.6\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/c8.1.1.png}
+    \caption{阻尼模型}
+    \label{fig:c8.1.1}
+\end{figure}
+\[ m \ddot{x} + c \dot{x} + k x = 0 \]
+\[  \ddot{x} + \frac{c}{m} \dot{x} + \frac{k}{m} x = 0 \]
+下即针对解此类方程进行研究:\\
+由通解形式可知, 得出的两解应线性无关\\
+先假设其中一解为:
+\[ y =  e^{\gamma t}  \]
+有:
+\[  y' = \gamma e^{\gamma t} \]
+\[  y'' = \gamma^2 e^{\gamma t} \] 
+\[\therefore \hspace*{2em}  \gamma^2 e^{\gamma t} + A \gamma e^{\gamma t} + B e^{\gamma t} = 0 \]
+\[\therefore \hspace*{2em}  \gamma^2 + A \gamma + B = 0 \]
+
+\subsubsection{\large ODE特征方程}
+{\Large \[ \gamma^2 + A \gamma + B = 0 \] }
+由上得此方程, 即为二阶方程的ODE特征方程\\
+解得:
+\[  \gamma = - \frac{A}{2} \pm \sqrt{\frac{A^2}{4} - B}\]
+为形式更加和谐, 将方程系数改写为:
+\[  \gamma^2 + 2 p \gamma + \omega ^2 = 0 \] 
+解得:
+\[  \gamma = - p \pm \sqrt{p^2 - \omega ^2} \]
+由解形式, 可知根有3种情况:
+
+
+case 1: $p^2 - \omega ^2 > 0$\\
+根为实数且不相等\\
+解为:
+\[ y = c_1 e^{r_1 t}  + c_2 e^{r_2 t}  \]
+若给出初值, 如$y(0) = 1, y'(0) = 0$, 可求得$c_1, c_2 $值， 得最后结果. 
+
+
+case 2: $p^2 - \omega ^2 = 0$\\
+根为重根\\
+方程为:
+\[ \gamma^2 + 2 p \gamma + p ^2 = 0 \]
+\[ \gamma = - p \]
+现得一解$e^{-pt}$, 无另根来对应另一解, 故现在问题为找另根\\
+有下:
+\[ y'' + p y' + p^2 y = 0 \]
+具有如下形式解:
+\[ y = y_1 u \]
+以 $y_1$为因子, $y = y_1 u$是方程的另一个线性无关解(u非常数)\\
+解:
+\begin{align*}
+    y  &= e^{-pt} u\\
+    y' &= -p e^{-pt} u + e^{-pt} u' \\
+    y''&= p^2 e^{-pt} u -2p e^{-pt} u' + e^{-pt} u'' 
+\end{align*}
+
+将上式分别乘$p^2, p, 1$后相加, 得:
+\[ e^{-pt} u'' = 0 \]
+\[ \therefore \hspace*{1em} u' = 0 \]
+\[ u = c_1 t+ c_2  \]
+即找一解即可, 可取 $u = t$
+\[ \therefore \hspace*{1em}  y = e^{-pt} t \]
+
+
+case 3: $p^2 - \omega ^2 < 0$\\
+根为复数\\
+解得:
+\[ \gamma = a \pm b i \]
+\[ \therefore y = e^{ a \pm b i} \]
+选取 $ a + b i $, 即可:
+\begin{align*}
+    y  &= e^{at + b t i} \\
+       &= e^{at} (c_1 \cos bt + c_2 \sin bt)\\
+       &= c_1 y_1 + c_2 y_2 
+\end{align*}
+
+即得完整解, 那为什么不用 $a - b i$呢?\\
+观察知道, 因
+\[ y_1 = e^{at} \cos bt = e^{at} \cos (-bt) = y_1 \]
+\[ y_2 = e^{at} \sin bt = - e^{at} \sin (-bt) = -y_2 \]
+只有其一系数改变符号, 其余不变, 则无需多余考虑\\
+那能否直接用如下表示解?
+\[ y = C_1 e^{(a + b i) t} + C_2 e^{(a - b i) t} \]
+其中$C_1, C_2$为复系数\\
+求证2种方法答案一致有2种方法, 如下:
+\begin{enumerate}
+    \item 完全展开， 乘法分配, 取实部.(不展开说明)
+    \item 利用 $u + i v$, 可令$i$为$-i$法找到实部
+\end{enumerate}
+
+具体操作如下:
+\[ C_1 e^{(a + b i) t} + C_2 e^{(a - b i) t} \]
+$i \rightarrow -i $
+\[ \bar{C_1} e^{(a - b i) t} + \bar{C_2} e^{(a + b i) t} \]
+$\Rightarrow $
+\[ C_1 = \bar{C_2} , C_2 = \bar{C_1} \]
+则令
+\[ y = (c + di) e^{(a + b i) t} + (c - di) e^{(a - b i) t} \]
+变形:
+\[ y = e^{at} [c (e^{ibt} + e^{-ibt}) + i d (e^{ibt} - e^{-ibt})] \]
+利用如下欧拉公式:
+\[ \cos x = \frac{1}{2} (e^{ix} + e^{-ix}) \]
+\[ \sin x = \frac{1}{2i} (e^{ix} - e^{-ix}) \]
+得:
+\[ y = e^{at} (2c \cos bt + 2d \sin bt) \]
+即与前只选取$a + bi$来求解的形式一致
+
+\subsection{\LARGE 二阶齐次线性微分方程}
+\subsubsection{\large 解理论}
+{\Large \[ y'' + p(x) y' + q(x) y = 0 \] }
+由前文讨论, 知求解方式为:\\
+找到线性无关的$y_1, y_2$两解(不考虑$0$解), 进行线性组合
+即为完整解, 自然引出下2个问题:
+
+
+Q1: $c_1 y_1 + c_2 y_2$为什么是解？\\
+下引入叠加原理:\\
+若$y_1, y_2$是线性齐次ODE的解\\
+$\Longrightarrow $  $c_1 y_1 + c_2 y_2$也是解\\
+为说明此原理, 介绍线性算子:\\
+对原方程:
+\[ y'' + p y' + q y = 0 \]
+变形:
+\[ D^2 y + p D y + q y = 0 \]
+\[ (D^2 + p D + q) y = 0 \]
+记$L = D^2 + p D + q$ 为线性算子
+\[ L y = 0 \]
+对于此将线性运算打包成一个算子, 称为线性算子\\
+此处线性算子为: $L = D^2 + p D + q$\\
+下讨论$L$为一般的线性算子时, 存在性质:
+\begin{enumerate}
+    \item $L(u_1 + u_2) = L(u_1) + L(u_2)$
+    \item $L (cu) = c L(u)$
+\end{enumerate}
+由此即可得Q1的解:\\
+若$y_1,y_2$为$L$的解, 则
+\begin{align*}
+    L(c_1 y_1 + c_2 y_2) &= L(c_1 y_1) + L(c_2 y_2) \\
+         &= c_1 L(y_1) + c_2 L(y_2)\\
+         &= 0 + 0 \\
+         &= 0
+\end{align*}
+
+即说明$c_1 y_1 + c_2 y_2$是$L$的解.\\[2em]
+\hspace*{2em} Q2: 为什么$c_1 y_1 + c_2 y_2$是所有解?\\
+为解决Q2, 从初值的角度出发,已知解与任意初值
+是否能找到一对$c_1, c_2$满足, 又是否唯一?\\
+下仅做探讨:\\
+现有:
+\[
+\left\{
+\begin{aligned}
+    y(x_0) &= a \\
+    y'(x_0) &= b
+\end{aligned}
+\right.
+\]
+即:
+\[
+\left\{
+\begin{aligned}
+    y = c_1 y_1 + c_2 y_2 \\
+    y' = c_1 y'_1 + c_2 y'_2
+\end{aligned}
+\right.
+\]
+\[
+\left\{
+\begin{aligned}
+    c_1 y_1 + c_2 y_2 = a \\
+    c_1 y'_1 + c_2 y'_2 = b
+\end{aligned}
+\right.
+\]
+由代数知识:\\
+若$c_1 , c_2$可解, 满足:
+\[
+\begin{vmatrix}
+    y_1 & y_2 \\
+    y'_1 & y'_2
+\end{vmatrix}_{x_0}
+\neq 0
+\]
+补充:\\
+将形如上式的行列式称为\\
+Wronskian(朗斯基行列式):
+\[
+W(y_1,y_2;x) = 
+\begin{vmatrix}
+    y_1 & y_2 \\
+    y'_1 & y'_2
+\end{vmatrix}
+\]
+且有:\\
+\[ W(y_1,y_2;x) \equiv 0 \hspace*{1em} or \neq 0 \text{(for all x)} \]
+补充到此, 继续讨论:\\
+当写出\{$c_1y_1 + c_2y_2$\}时, 即是宣称所以解\\
+假设\{$c_1'u_1 + c_2'u_2$\}是另一对线性无关组:
+\[
+\left\{
+\begin{aligned}
+    u_1 = \hat{c_1} y_1 + \hat{c_2} y_2  \\
+    u_2 = \hat{c_1} y_1 + \hat{c_2} y_2
+\end{aligned}
+\right.
+\]
+为有更佳的初值， 自然正交化:
+\[
+\left\{
+\begin{aligned}
+    Y_1(0) = 1 ,  Y_1'(0) = 0 \\
+    Y_2(0) = 0 ,  Y_2'(0) = 1
+\end{aligned}
+\right.
+\]
+下给出几个例子:\\
+eg1:
+\[ y'' + y = 0 \]
+由初值解下:
+\[
+\left\{
+\begin{aligned}
+    y_1 = \cos t = Y_1  \\
+    y_2 = \sin t = Y_2
+\end{aligned}
+\right.
+\]
+eg2:
+\[ y'' - y = 0 \]
+由初值解下:
+\[
+\left\{
+\begin{aligned}
+    y_1 = c_1 e^x + c_2 e^{-x} \\
+    y_2 = c_1 e^x - c_2 e^{-x}
+\end{aligned}
+\right.
+\]
+得:
+\[
+\left\{
+\begin{aligned}
+    Y_1 = \frac{(e^x +  e^{-x})}{2} = \cosh x  \\
+    Y_2 = \frac{(e^x -  e^{-x})}{2} = \sinh x
+\end{aligned}
+\right.
+\]
+观察, 有如下定理:\\
+若$Y_1, Y_2$在$0$处正交化, 初值问题为:
+\[
+\left\{
+\begin{aligned}
+    y(0) = y_0  \\
+    y'(0) = y_0'
+\end{aligned}
+\right.
+\]
+解为
+\[ y = y_0 Y_1 + y_0' Y_2 \]
+\subsubsection{\large 存在和唯一性定理}
+由上简单的讨论, 引入存在和唯一性定理:\\
+若有方程如下:
+\[ y'' + p(x)y' + q(x)y = f(x) \]
+且$p, q$为连续函数, $y$为可导函数,
+那么有且仅有唯一解满足给定初值条件:
+\[
+\left\{
+\begin{aligned}
+    y(0) = y_0  \\
+    y'(0) = y_0'
+\end{aligned}
+\right.
+\]
+\[ y = y_0 y_1 + y_0' y_2 \]
+
+\subsection{\LARGE 二阶非齐次线性微分方程}
+\subsubsection{\large 解结构}
+现考虑二阶非齐次线性微分方程:
+{\Large \[ y'' + p(x)y' + q(x)y = f(x) \] }
+对应的齐次方程(相伴齐次方程)为:
+\[ y'' + p(x)y' + q(x)y = 0 \]
+其解为:
+\[ y_c = c_1 y_1 + c_2 y_2 \]
+考虑非齐次方程的解结构, 方程记为:
+\[ L y = f(x) \]
+其中$L$为二阶线性算子\\
+解形式:
+\[ y = y_p + y_c \]
+\[ y = y_p + c_1 y_1 + c_2 y_2 \]
+其中$y_p$为$L y = f(x)$的特解, 
+$y_c$为上述相伴齐次方程的解\\
+为进一步讨论, 下提出2个命题并证明:\\
+命题1: $y_p + c_1 y_1 + c_2 y_2$是解\\
+证明:\\
+代入方程:
+\begin{align*}
+L(y_p + c_1 y_1 + c_2 y_2) &= L(y_p) + L(c_1 y_1) + L(c_2 y_2) \\
+    &= f(x) + 0 \\
+L(y)    &= f(x)   
+\end{align*}
+证毕.\\[2em]
+命题2: $y_p + c_1 y_1 + c_2 y_2$是唯一解\\
+证明:\\
+假设$u(x)$为解:
+\begin{align*}
+L(u) &= f(x) \\
+L(y_p) &= f(x)\\
+L(u - y_p) &= 0
+\end{align*}
+得, $u - y_p$是相伴齐方程的解, 
+令$u - y_p = c_1 y_1 + c_2 y_2$\\
+由存在和唯一性定理, 矛盾, 即无其它解.\\
+证毕.\\
+为了进一步讨论, 下回到一阶线性微分方程且只考虑
+常系数的情况:
+\[ y' + k y = q(t) \]
+解:
+\[ y = e^{-kt} \int q(t) e^{kt} dt + ce^{-kt} \]
+观察, 套用前文结论:
+\[
+\left\{
+\begin{aligned}
+    &y_p = e^{-kt} \int q(t) e^{kt} dt\\
+    &y_c = ce^{-kt} 
+\end{aligned}
+\right.
+\]
+且若$k > 0$, 还存在以下概念:
+\[
+\left\{
+\begin{aligned}
+    y_p = \text{稳态解}  \\
+    y_c = \text{暂态解}
+\end{aligned}
+\right.
+\]
+思考:
+\[ y'' + A y' + By = f(t) \]
+当$t \to \infty$时, 在什么情况下, 暂态解为0$(\forall c_1, c_2)$?\\
+若找到此情况, 则称这个ODE为稳定的.\\
+从根开始考虑:
+\begin{center}
+    \begin{tabular}{c|c|c}
+        \text{特征方程的根} & \text{解}                             & \text{趋于0的条件}  \\ \hline
+        $r_1 \neq r_2$     & $c_1 e^{r_1 t} + c_2 e^{r_2 t} $      & $r_1,r_2 \hspace*{0.5em} \textcolor{red}{ < 0}$   \\ \hline
+        $r_1 = r_2$        & $(c_1 + c_2 t) e^{r_1 t}$             & $r_1 = r_2 \hspace*{0.5em} \textcolor{red}{ < 0}$  \\ \hline
+        $r = a \pm b i$    & $e^{a t} (c_1 \cos bt + c_2 \sin bt)$ & $a \hspace*{0.5em} \textcolor{red}{ < 0}$         \\
+    \end{tabular}
+\end{center}
+观察得:\\
+ODE稳定的条件是:
+\begin{center}
+所有特征根都具有负实部
+\end{center}
+
+\newpage
+\subsection{\LARGE 非齐次 ODE}
+\subsubsection{\large 指数型非齐次项}
+继续观察下式方程:
+\[ y'' + A y' + By = f(x) \]
+若输入$f(x)$如下:
+\[
+\begin{aligned}
+    f(x) &= e^{ax} \hspace*{2em} (a < 0 , often)\\
+         &=  \left\{
+                \begin{aligned}
+                \sin \omega x  \\
+                \cos \omega x
+                \end{aligned}
+                \right.\\
+         &= \left\{
+                \begin{aligned}
+                &e^{ax} \sin \omega x  \\
+                &e^{ax} \cosh \omega x
+                \end{aligned}
+                \right.   
+\end{aligned}
+\]
+若 $\alpha \in \mathbb{C} $ \\
+则, 以上都是$e^{\alpha X} = e^{(a + i \omega)x}$的特例\\
+现将原式提取多项式算子:
+\[ (D^2 + A D + B) y = f(x) \]
+\[ P(D) y = f(x) \]
+其中$p(D) = D^2 + A D + B$\\
+同时存在如下结论:
+\[ p(D) e^{\alpha x} = p(\alpha) e^{\alpha x} \]
+代入, 即证.
+\subsubsection{\large 指数输入定理}
+关于方程:
+\[ p(D) y = e^{\alpha x} \]
+有特解:
+\[ y_p = \frac{e^{\alpha x}}{p(\alpha)}  \hspace*{2em} p(\alpha) \neq 0 \]
+代入, 即证.\\
+思考, $p(\alpha) = 0$情况:\\
+为解决此问题, 引入如下法则\\
+指数移位法则:
+\[ p(D) e^{\alpha x} u(x) = e^{\alpha x} p(D + \alpha) u(x)    \]
+证明:\\
+从最简单情况开始考虑:\\
+$p(D) = D$
+\begin{align*}
+D(e^{\alpha x} u) &= e^{\alpha x} D u + a e^{\alpha x} u  \\
+                &= e^{\alpha x} (D u + a u)  \\
+                &= e^{\alpha x} (D + a) u 
+\end{align*}
+$p(D) = D^2$
+\begin{align*}
+D^2(e^{\alpha x} u) &= D(D(e^{\alpha x} u)) \\
+                &= D(e^{\alpha x} (D + a) u)  \\
+                &= e^{\alpha x} (D + a) [(D + a) u]  \\
+                &= e^{\alpha x} ( D + a)^2 u 
+\end{align*}
+按此迭代法, 由数学归纳法推得 $p(D) = D^n$也满足上述关系.\\
+而$P(D)$的一般情况为$D, D^2, D^3, ..., D^n$的无关线性组合, 
+而线性组合不影响结论, 即证毕.\\
+得此法则后, 下直接给出 $p(\alpha) = 0$时, 解情况:
+\[ p(D) y = e^{\alpha x} \]
+\[ y_p = \frac{x e^{\alpha x}}{p'(\alpha)}  \hspace*{2em} p(\alpha) = 0 \]
+此时 $\alpha$是多项式$p$的单根\\
+自然引出, 若$\alpha$是多项式$p$的二重根, 
+即$p'(\alpha) = 0$, 解情况为?如下:
+\[ y_p = \frac{x^2 e^{\alpha x}}{p''(\alpha)}  \hspace*{2em} p'(\alpha) = 0 \]
+往下更高阶按此规律即可推得, 此处不再赘述.\\
+下补充:\\
+单根和$p(\alpha) = 0$联系:
+\begin{align*}
+    p(D)  &= (D - a) (D - b) \hspace*{2em} a \neq b\\
+    p'(D) &= (D - b) + (D - a)  \\
+    p'(a) &= a - b \neq 0 \\
+    p(D) \frac{e^{\alpha x}x}{p'(\alpha)}   &= e^{\alpha x} ( D + a - b)D \frac{x}{p'(\alpha)} \\
+            &= e^{\alpha x} \frac{a-b}{p'(\alpha)}\\
+            &= e^{\alpha x}
+\end{align*}
+证毕.

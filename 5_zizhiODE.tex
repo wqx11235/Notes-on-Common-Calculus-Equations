@@ -1,0 +1,128 @@
+\newpage
+
+\section{\huge \textcolor{blue}{一阶自治方程}}
+ 
+\subsection{\LARGE 一阶自治方程}
+先给出一阶自治方程的形式:
+{\Large
+\begin{equation}
+\frac{dy}{dt} = f(y)
+\end{equation}
+}
+可看出自治方程的特征就是方程右侧没有$t$, 若用分离变量法可正常求解
+但在此，探求在不解方程的情况下判断相关性质:
+\begin{enumerate}
+    \item 方向场
+    \item 临界点
+\end{enumerate}
+
+\subsubsection{\large 方向场}
+先任给一个自治方程作图如下:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.6\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc5.1.1.png}
+    \caption{自治方程模拟方向场}
+    \label{fig:cwffc5.1.1}
+\end{figure}\\
+显然, 发现自治方程的积分曲线对平移保持不变, 所以解形状相同.
+\\
+\\
+\subsubsection{\large 临界点}
+关于临界点下面为3条等价式:
+\begin{enumerate}
+    \item $y_0$ 是临界点
+    \item $f(y_0) = 0$
+    \item $y = y_0$
+\end{enumerate}
+显然如图:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.6\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc5.1.2.png}
+    \caption{临界点}
+    \label{fig:cwffc5.1.2}
+\end{figure}\\
+所有积分曲线只会存在临界线两侧, 之间, 
+不会与临界线相交\\
+下试求临界点:\\
+记 $y = $银行存款, $r = $利率(连续), $w = $盗用率(连续)
+\[ \frac{dy}{dt} = r y - w \]
+先求临界点:
+令 $r y - w = 0$
+\[ \therefore y = \frac{w}{r} \]
+\\
+\\
+\\作图:\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.4\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc5.1.3.png}
+    \caption{临界点}
+    \label{fig:cwffc5.1.3}
+\end{figure}\\
+下分析积分曲线变化:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.4\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc5.1.4.png}
+    \caption{积分曲线增长变化}
+    \label{fig:cwffc5.1.4}
+\end{figure}\\
+据此些分析大概积分曲线如下:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc5.1.5.png}
+    \caption{积分曲线}
+    \label{fig:cwffc5.1.5}
+\end{figure}\\
+
+\subsubsection{\large 逻辑斯蒂方程}
+逻辑斯蒂方程(人口模型):
+{\Large
+\begin{equation}
+\frac{dy}{dt} = k y
+\end{equation}
+}
+其中记$y$为人口数量, $k$为增长率, 若k
+为常数, 即为简单人口模型,
+ 而逻辑斯蒂增长表示, 假设k为常数不合理
+ (因资源有限, 换言之, 人口增长率会随人口数量增加而降低)\\
+ 下从简单的k探讨:\\
+ 设: $k = a - b y$
+ \[ \frac{dy}{dt} = (a - b y) y \]
+ 临界点:
+ \[ (a - b y) y = 0 \Rightarrow y = 0 \text{ 或 } y = \frac{a}{b} \]
+ \begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.3\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc5.1.6.png}
+    \caption{积分曲线增长变化}
+    \label{fig:cwffc5.1.6}
+\end{figure}
+
+ \begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc5.1.7.png}
+    \caption{积分曲线}
+    \label{fig:cwffc5.1.7}
+\end{figure}
+
+由图 $y = 0 $ 为非稳定临界点, $y = \frac{a}{b}$ 为稳定临界点
+, 若积分曲线在一侧聚拢, 一侧发散, 则称半稳定点\\
+下在逻辑斯蒂方程基础上, 加入收割概念(收割按照定值, 应用在养殖场)
+{\Large
+\begin{equation}
+\frac{dy}{dt} = (a - b y) y - h
+\end{equation}
+}
+ \begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.4\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc5.1.8.png}
+    \caption{积分曲线增长变化}
+    \label{fig:cwffc5.1.8}
+\end{figure}
+
+ \begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc5.1.9.png}
+    \caption{积分曲线}
+    \label{fig:cwffc5.1.9}
+\end{figure}
+
+由图可知, $h_m$ 即为最大收割点, 收割不使种群数目低于此, 即可得到最大收益

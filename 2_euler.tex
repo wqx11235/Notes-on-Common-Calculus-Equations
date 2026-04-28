@@ -1,0 +1,182 @@
+\newpage
+\section{\huge \textcolor{blue}{Euler数值方法及推广}}
+\subsection{\LARGE Euler数值法}
+
+解微分方程是一种初值问题
+\[
+\text{IVP} \left\{
+\begin{array}{l}
+y' = f(x, y), \\
+y_0 = y(x_0).
+\end{array}
+\right.
+\]
+注1:IVP即初值方程, 后续不再说明.\\
+注2:方程包含2层含义:\\
+\hspace*{2em}微分方程本身\\
+\hspace*{2em}方程解从何处开始\\[0.5cm]
+下用具体流程来演示Euler数值法:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=1\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc5.png}
+    \caption{Euler数值法步骤1}
+    \label{fig:euler1}
+\end{figure}\\
+Euler数值法步骤1:\\
+\hspace*{2em}1.起始点，作线素；\\
+\hspace*{2em}2.取步长h(等距)；\\
+\hspace*{2em}3.沿线素方向作直线，在新的点重新计算线素，
+重复，即得一近似折线.\\[0.3cm]
+下对作n点后，各值关系进行分析:\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=1\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc6.png}
+    \caption{Euler数值法步骤2}
+    \label{fig:euler2}
+\end{figure}
+
+由图, 记n点得斜率为An(定义)，可得公式关系:
+{\Large
+\begin{equation}
+y_{n+1} = y_n + h A_n
+\end{equation}
+}
+\newpage
+由上过程, 即可的Euler迭代方程:
+
+{\Large
+\begin{equation}
+\text{Euler}
+\begin{cases}
+x_{n+1} = x_n + h;\\
+y_{n+1} = y_n + h A_n;\\
+A_n = f(x_n,y_n).
+\end{cases}
+\end{equation}
+}
+下举一例子来展示Euler数值法:\\[0.3cm]
+eg2.1.1: 求解 $y' = y^2 - x^2$, $y(0) = 1$, $h = 0.1$;
+
+\begin{center}
+    \begin{tabular}{c|c|c|c|c}
+        $n$ & $x_n$ & $y_n$ & $h_n$ & $h f_n$ \\ \hline
+        0   & 0     & 1     & $-1$   & $-0.1$   \\ \hline
+        1   & 0.1   & 0.9   & $-0.80$ & $-0.08$  \\ \hline
+        2   & 0.2   & \textcolor{red}{0.82}   &        &          \\
+    \end{tabular}
+\end{center}
+
+\[
+y(0.2) \approx 0.82.
+\]
+而在得出euler(欧拉法结果)后，自然产生一些问题\\
+\textcolor{red}{Q1: 这个结果有多精确？}\\
+\textcolor{red}{Q2: 若没有原函数表达式，由该如何取验证这个值？}\\
+现可将问题转化为: euler是偏高的还是偏低的？
+
+\newpage
+\subsection{\LARGE 误差分析}
+
+几何解释:\\
+一般地，如果解是直线，那么Euler法始终满足方程，且误差为0.\\
+下讨论曲线情况:\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=1\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc2.21.png}
+    \caption{Euler法对凹凸函数的预测}
+    \label{fig:cwffc2.21}
+\end{figure}
+
+由图可知:\\
+\hspace*{2em}1. 凸函数: euler 偏低\\
+\hspace*{2em}2. 凹函数: euler 偏高\\
+其中\textcolor{red}{e}为误差值\\
+下判断函数的凹凸性，判断二阶导即可，
+而对于微分方程只需对本身求导，即能判断二阶导的值.\\
+eg2.2.1: 求解 $y' = x^2 - y^2$, $y(0) = 1$.
+{\Large
+\begin{equation}
+y'' = 2x - 2yy' = 2x - 2y(x^2 - y^2)
+\end{equation}
+}
+\hspace*{6em}$y(0) = 1$,$y'(0) = -1$,$y''(0) = 2$\\
+\hspace*{6em}$\therefore$ euler偏低.
+
+\newpage
+\subsection{\LARGE 改进Euler数值方法}
+
+在上述对凹凸函数在euler下进行误差分析时发现,
+存在着系统误差\textcolor{red}{e},
+那么是否意味着存在更精确的方法，
+或者说Euler要如何改进呢?,
+
+\subsubsection{\large 取更小的步长h}
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=1\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc2.3.1.png}
+    \caption{取不同的步长h}
+    \label{fig:cwffc2.3.1}
+\end{figure}
+
+由图可知:\textcolor{red}{e}取决于h的选取\colorbox{yellow}{(h越小,e越小)}
+\begin{equation}
+\textcolor{red}{e} \sim c_1 h
+\end{equation}
+由此,我们即得Euler法为一阶方法(h的幂次为1)\\
+即引出下问?要一直取到多小的h,才能得到足够好的解?\\
+改变改进方向,有下
+
+\newpage
+\subsubsection{\large 对k改进}
+其中$k=A_n$\\
+能否找到一个更好的k来代替$A_n$,让折线回归到曲线上?\\
+即有如下做法：
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.6\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc2.3.2.png}
+    \caption{新的k}
+    \label{fig:cwffc2.3.2}
+\end{figure}
+
+其中k取$A_n,B_n$的中值\\
+由上得Heun法(或改进Euler法,或RK2),方程如下:
+
+{\large
+\begin{equation}
+\text{RK2}
+\begin{cases}
+x_{n+1} = x_n + h;\\
+y_{n+1} = y_n + h k;\\
+k = \dfrac{A_n + B_n}{2}\\
+y_{n+1}^{*} = y_n + h A_n\\
+B_n = f(x_{n+1},y_{n+1}^{*}).
+\end{cases}
+\end{equation}
+}
+其中RK 表示 Runge-Kutta ,2 表示为她是一个2阶方法.\\
+RK2:误差随h,e的变化关系为:
+\begin{equation}
+\textcolor{red}{e} \sim c_2 h^2
+\end{equation}
+
+\newpage
+虽然RK2相对于euler更精确, 但是RK2的计算量比euler大
+(在斜率的计算时间上).\\
+在实际使用中, 我们会更加倾向使用RK4, 并记她为标准方法.\\
+只需将RK2的公式中k改为如下即可:
+\begin{equation}
+k = \dfrac{A_n + 2 B_n + 2 C_n + D_n}{6}
+\end{equation}
+其余不再此处过多探究.\\[1em]
+最后看一个关于奇点的例子:
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.6\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwwfc2.3.2.2.png}
+    \caption{eg2.3.2.2}
+    \label{fig:cwffc2.3.2.2}
+\end{figure}
+
+可知如何判断奇点位置成为数值计算的一大难题.

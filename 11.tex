@@ -1,0 +1,848 @@
+\newpage
+
+\section{\huge \textcolor{blue}{\hspace*{0.2em}线性齐次微分方程组}}
+\subsection{\LARGE \hspace*{0.1em}一阶常微分方程组及几何解释}
+\subsubsection{\large 线性方程组}
+形如:
+\[
+\begin{cases}
+ x' = f(x,y,t) \\
+y' = g(x,y,t)
+\end{cases}
+\]
+初始条件: $x(t_0)=x_0,y(t_0)=y_0$\\
+其中$x, y$是因变量, $t$是自变量, 称为一阶方程组.\\
+线性方程组:
+\[
+\begin{cases}
+x' = ax + by + r_1(t) \\
+y' = cx + dy + r_2(t)
+\end{cases}
+\]
+当$a,b,c,d$是常数时, 称为常系数线性方程组\\
+若$a,b,c,d$是$t$的函数, 依旧保持线性\\
+而线性齐次将作为首先研究对象,即:
+\[ r_1 = 0 \qquad r_2 = 0 \]
+依旧以温度模型(双层)为例
+列出下方程组(弱化物理属性):
+\[
+\begin{cases}
+    \frac{dT_1}{dt} = a (T_2 - T_1)\\
+    \frac{dT_2}{dt} = a (T_1 - T_2) + b (T_e - T_2)
+\end{cases}
+\] 
+整理得:
+\[
+\begin{cases}
+    T_1' = -a T_1 + a T_2 \\
+    T_2' = a T_1 - (a+b) T_2 + b T_e 
+\end{cases}
+\]
+假设 
+$\begin{cases}
+    a=2\\
+    b=3
+\end{cases}$, $T_e=0$, 则:
+\[
+\begin{cases}
+    T_1' = -2 T_1 + 2 T_2 \\
+    T_2' = \hspace*{0.6em}2 T_1 - 5 T_2 
+\end{cases}
+\]
+法一:(消去变量)
+\begin{align*}
+    T_2 &= \frac{T_1'+2T_1}{2} \\
+    (\frac{T_1'+2T_1}{2})' &= 2T_1 - 5(\frac{T_1'+2T_1}{2}) \\
+    \intertext{整理得:}
+    T_1'' + 7 T_1' + 6 T_1 &= 0 \\
+    r^2 + 7 r + 6 &= 0 \\
+    (r+1)(r+6) &= 0 \\
+    r &= -1 \hspace*{0.5em} or -6
+    \intertext{解得:}
+    T_1 &= c_1 e^{-t} + c_2 e^{-6t}
+\end{align*}
+为了确保最后的解只有2个常数, 需用已知的$T_1$找$T_2$
+\[ T_2 = \frac{T_1'+2T_1}{2} \]
+\[ \therefore  \hspace*{1em} T_2 = \frac{1}{2}c_1 e^{-t} - 2c_2 e^{-6t} \]
+假设初值
+$\begin{cases}
+    T_1(0) = 40 \\
+    T_2(0) = 45
+\end{cases}$, 代入:
+\[
+\begin{cases}
+    40 = c_1 +c_2 \\
+    45 = \frac{1}{2}c_1 - 2c_2
+\end{cases}
+\Longrightarrow  \hspace*{1em}
+\begin{cases}
+    c_1 = 50 \\
+    c_2 = -10
+\end{cases}
+\]
+
+\subsubsection{\large 几何解释}
+求解过后, 试分析其几何意义\\
+若方程如下:
+\[
+\begin{cases}
+    x' = f(x,y) \\
+    y' = g(x,y)
+\end{cases}
+\]
+在右侧没有$t$的情况下, 称自治方程组\\
+解:
+\[ 
+\begin{cases}
+    x = x(t) \\
+    y = y(t)
+\end{cases}
+\]
+解为参数方程组的形式, 即形成参数化曲线\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf11.2.1.png}
+    \caption{参数化曲线}
+    \label{fig:cwf11.2.1}
+\end{figure}
+
+图中存在多条曲线, 因为方程存在多解, 当
+输入的初始条件不同, 则会生成不同曲线\\
+表示:
+$\begin{cases}
+    x'(t) \\
+    y'(t)
+\end{cases}$, 为时刻$t$解的速度, 即\\
+此自治微分方程组的几何意义为速度场, 解为参数化曲线.
+
+\subsection{\LARGE \hspace*{0.1em}常系数齐次方程组}
+\subsubsection{\large 尝试解-法-矩阵形式}
+重新审视前一节的温度模型方程组\\
+为了让变量更中性, 令$x=T_1, y=T_2$, 则:
+\[
+\begin{cases}
+    x' = -2 x + 2 y \\
+    y' = 2 x - 5 y
+\end{cases}
+\]
+法一: 消元, 前文已介绍, 解为:
+\[
+\begin{cases}
+    x = c_1 e^{-t} + c_2 e^{-6t} \\
+    y = \frac{1}{2}c_1 e^{-t} - 2c_2 e^{-6t}
+\end{cases}
+\]
+法二: 尝试解\\
+此法将用到打量矩阵知识\\
+将$(x,y)$看作一个列向量, 则:
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}' 
+= 
+\begin{bmatrix}
+    -2 &  2 \\
+     2 & -5
+\end{bmatrix}
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+\]
+解:
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+=
+c_1
+\begin{bmatrix}
+    1 \\
+    1/2
+\end{bmatrix}
+e^{-t}
++
+c_2
+\begin{bmatrix}
+    1 \\
+    -2
+\end{bmatrix}
+e^{-6t}
+\]
+现利用"尝试解":
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+=
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}
+e^{\lambda t}
+\]
+代入方程组:
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}'
+=
+\lambda 
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}
+e^{\lambda t}
+=
+\begin{bmatrix}
+    -2 &  2 \\
+     2 & -5
+\end{bmatrix}
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}
+e^{\lambda t}
+\]
+\[
+\therefore  \hspace*{2em}
+\lambda 
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+    -2 &  2 \\
+     2 & -5
+\end{bmatrix}
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}
+\]
+现即将解微分方程问题简化为解代数方程问题:
+\[
+\begin{cases}
+    \lambda a_1 = -2 a_1 + 2 a_2\\
+    \lambda a_2 = 2 a_1 - 5 a_2
+\end{cases}
+\]
+将$\lambda$视为参数, 改写:
+\[
+\begin{cases}
+    \lambda (-2 - \lambda)a_1 + 2 a_2 = 0\\
+    \lambda 2 a_1 +(-5 - \lambda) a_2 = 0
+\end{cases}
+\]
+即需解其非平凡解, 当且仅当对应行列式为$0$:
+\[
+\begin{vmatrix}
+    -2 - \lambda & 2 \\
+    2 & -5 - \lambda
+\end{vmatrix}
+= 0
+\]
+即:
+\[
+\textcolor{red}{\lambda^2 + 7 \lambda + 6 = 0}
+\]
+此方程称为特征方程, 解:
+\[ \lambda = -1 \hspace*{0.5em} or -6 \]
+当$\lambda = -1$:
+\[
+\begin{cases}
+    -a_1 + 2 a_2 = 0 \\
+    2 a_1 -4 a_2 = 0
+\end{cases}
+\]
+令$a_2 = 1,  a_1= 2$, 即 
+$\begin{bmatrix}
+    2 \\
+    1
+\end{bmatrix}$  解:
+\[
+\begin{bmatrix}
+    2 \\
+    1
+\end{bmatrix}
+e^{-t}
+\]
+当$\lambda = -6$:
+\[
+\begin{cases}
+    4a_1 + 2 a_2 = 0 \\
+    2 a_1 + a_2 = 0
+\end{cases}
+\]
+令$a_1 = 1,  a_1= -2$, 即 
+$\begin{bmatrix}
+    1 \\
+    -2
+\end{bmatrix}$  解:
+\[
+\begin{bmatrix}
+    1 \\
+    -2
+\end{bmatrix}
+e^{-6t}
+\]
+综上所述, 通解:
+\[
+\tilde{c_1}
+\begin{bmatrix}
+    2 \\
+    1
+\end{bmatrix}
+e^{-t}
++
+\tilde{c_2}
+\begin{bmatrix}
+    1 \\
+    -2
+\end{bmatrix}
+e^{-6t}
+\]
+与法一解形式无区别.
+
+\subsubsection{\large 矩阵形式一般化}
+现将上述解法过程进行一般化:
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}'
+=
+\begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+\]
+尝试解:
+\[
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}
+e^{\lambda t}
+\]
+代入:
+\[
+\lambda
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}
+\]
+有:
+\[
+\begin{bmatrix}
+    a-\lambda & b \\
+    c & d-\lambda
+\end{bmatrix}
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}
+= 0
+\]
+求非平凡解, 当且仅当对应系数行列式为$0$:
+\[
+\begin{vmatrix}
+    a-\lambda & b \\
+    c & d-\lambda
+\end{vmatrix}
+= 0
+\]
+即:
+\[
+\textcolor{red}{\lambda^2 - (a+d)\lambda + (ad-bc) = 0}
+\]
+观察此特征方程\\
+记
+$A=
+\begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}$, 有:
+\[
+tr(A)=a+d  \hspace*{2em} det(A)=ad-bc
+\]
+得特征方程:
+\[
+\lambda^2 - tr(A)\lambda + det(A) = 0
+\]
+假设其解为$\lambda_1, \lambda_2$(不同实数), 称为特征值.\\
+对$\forall \lambda_i$ 找对应特征向量$\vec{\alpha _i}
+=
+\begin{bmatrix}
+    a_{1i} \\
+    a_{2i}
+\end{bmatrix}$:
+\[
+\begin{bmatrix}
+    a-\lambda_i & b \\
+    c & d-\lambda_i
+\end{bmatrix}
+\begin{bmatrix}
+    a_{1i} \\
+    a_{2i}
+\end{bmatrix}
+= 0
+\]
+得通解:
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+=
+c_1
+\begin{bmatrix}
+    a_{11} \\
+    a_{21}
+\end{bmatrix}
+e^{\lambda_1 t}
++
+c_2
+\begin{bmatrix}
+    a_{12} \\
+    a_{22}
+\end{bmatrix}
+e^{\lambda_2 t}
+\]
+
+\subsubsection{\large 矩阵形式简化}
+现继续对一般化过程简化, 可适用于$n \times n$:\\
+记
+$\vec{x} =
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}$ , 
+$\vec{\alpha} =
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}$ , 
+$A =
+\begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}$ \\
+方程为:
+\[
+\vec{x}' = A \vec{x}
+\]
+尝试解:
+\[
+\vec{x}
+=
+\vec{\alpha}
+e^{\lambda t}
+\]
+即:
+\[ \lambda \vec{\alpha}= A \vec{\alpha} \]
+\[ (A - \lambda I) \vec{\alpha} = 0 \]
+特征方程:
+\[
+\begin{vmatrix}
+    A - \lambda I
+\end{vmatrix}
+= 0
+\]
+根仍为特征值.
+
+\subsubsection{\large 重根分析}
+\[
+\begin{vmatrix}
+    A - \lambda I
+\end{vmatrix}
+= 0
+\]
+考虑到求解特征方程可能存在重根, 下举一例来分析如何处理:\\
+eg: 
+$A =
+\begin{bmatrix}
+    -2 & 1 & 1 \\
+      1 & -2 & 1 \\
+      1 & 1 & -2
+\end{bmatrix}$\\
+求解:
+\[
+\begin{vmatrix}
+    A - \lambda I
+\end{vmatrix}
+=
+\begin{vmatrix}
+    -2-\lambda & 1 & 1 \\
+      1 & -2-\lambda & 1 \\
+      1 & 1 & -2-\lambda
+\end{vmatrix}=0
+\]
+即得:
+\[ \lambda (\lambda + 3)^2 = 0 \]
+\[ \lambda = 0, \lambda = -3 (\text{重根})\]
+当$\lambda = 0$时:
+\[
+\begin{cases}
+    -2a_1 + a_2 + a_3 = 0 \\
+    a_1 - 2a_2 + a_3 = 0 \\
+    a_1 + a_2 - 2a_3 = 0
+\end{cases}
+\]
+解:
+\[
+\vec{\alpha}_3  
+=
+\begin{bmatrix}
+    1 \\
+    1 \\
+    1
+\end{bmatrix}
+\]
+当$\lambda = -3$时:
+\[
+\begin{cases}
+    a_1 + a_2 + a_3 = 0 \\
+    a_1 + a_2 + a_3 = 0 \\
+    a_1 + a_2 + a_3 = 0
+\end{cases}
+\]
+令$a_1 = 1, a_2 = 0, a_3 = -1$, 即
+\[
+\vec{\alpha}_1 =
+\begin{bmatrix}
+    1 \\
+    0 \\
+    -1
+\end{bmatrix}
+e^{-3t}
+\]
+令$a_1 = 1, a_2 = -1, a_3 = 0$, 即
+\[
+\vec{\alpha}_2 =
+\begin{bmatrix}
+    1 \\
+    -1 \\
+    0
+\end{bmatrix}
+e^{-3t}
+\]
+通解:
+\[
+\vec{x}
+=
+c_1
+\begin{bmatrix}
+    1 \\
+    0 \\
+    -1
+\end{bmatrix}
+e^{-3t}
++
+c_2
+\begin{bmatrix}
+    1 \\
+    -1 \\
+    0
+\end{bmatrix}
+e^{-3t}
++
+c_3
+\begin{bmatrix}
+    1 \\
+    1 \\
+    1
+\end{bmatrix}
+\]
+综上, 给出如下概念:\\
+若 $\lambda$为重复特征值, 且能找到
+足够的独立特征向量, 其构造所需数是独立解.
+即称: 完备特征值.\\
+若 不能找到足够的独立特征向量, 即称: 不完备特征值.\\[0.2em]
+并给出如下定理:\\[0.5em]
+主轴定理(谱定理):\\
+若$A$为实对称 $n \times n$矩阵, 则它所有的特征值均是完备特征值.
+
+
+\subsubsection{\large 复特征根}
+到此, 考虑复特征值\\
+遵循上节同一个程序, 仅改变定义域:
+\[
+\vec{\alpha } \cdot e^{(a + bi)t}
+\]
+在最后一步:\\
+取实部和虚部, 得到两个实数解:
+\[
+\begin{cases}
+    x' = x + 2y \\
+    y' = -x - y
+\end{cases}
+, 
+A =
+\begin{bmatrix}
+    1 & 2 \\
+    -1 & -1
+\end{bmatrix}
+\]
+得:
+\[ \lambda^2 + 1 = 0 \]
+\[ \lambda = \pm i \]
+现令$a_1 = 1$, $a_2 = - \frac{1-i}{2}$
+\[
+\begin{bmatrix}
+    1 \\
+    \frac{i-1}{2}
+\end{bmatrix}
+e^{it} =
+\left\{
+\begin{bmatrix}
+    1 \\
+    -\frac{1}{2}
+\end{bmatrix}
++
+i
+\begin{bmatrix}
+    0 \\
+    \frac{1}{2}
+\end{bmatrix}
+\right\} 
+(\cos t + i \sin t)
+\]
+取$Re$ :
+\[
+\begin{bmatrix}
+    1 \\
+    -\frac{1}{2}
+\end{bmatrix}
+\cos t -
+\begin{bmatrix}
+    0  \\
+    \frac{1}{2}
+\end{bmatrix}
+\sin t =
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+\]
+即:
+\[
+\begin{cases}
+    x = \cos t \\
+    y = -\frac{1}{2}(\sin t + \cos t)
+\end{cases}
+\]
+
+\newpage
+\subsection{\LARGE \hspace*{0.1em}2X2 常系数齐次线性方程组作图 }
+
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}'
+=
+\begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+\]
+eg:
+\[
+\begin{cases}
+    x' = -x + by \\
+    y' = cx - 3y
+\end{cases} , x,y \text{表示偏离}
+\]
+求解:
+\[
+\begin{cases}
+    x' = -x + 2y \\
+    y' = - 3y
+\end{cases} , 
+A =
+\begin{bmatrix}
+    -1 & 2 \\
+    0 & -3
+\end{bmatrix}
+\]
+\[ \lambda^2 + \lambda + 3 = 0 \]
+\[ \lambda = -3, \lambda = -1  \]
+得:
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+=
+c_1
+\begin{bmatrix}
+    1 \\
+    -1
+\end{bmatrix}
+e^{-3t}
++
+c_2
+\begin{bmatrix}
+    1 \\
+    0
+\end{bmatrix}
+e^{-t}
+\]
+\[
+\begin{cases}
+    x = c_1 e^{-3t} + c_2 e^{-t} \\
+    y = -c_1 e^{-3t} 
+\end{cases}
+\]
+画草图:\\
+先找基本点
+\[
+\begin{cases}
+    c_1 = \pm 1 , &c_2 = 0 \\
+    c_1 = 0, &c_2 = \pm 1
+\end{cases}
+\]
+eg: 当$t \to \infty$时:
+\[
+c_1
+\begin{bmatrix}
+    1 \\
+    -1
+\end{bmatrix}
+e^{-3t}
++
+c_2
+\begin{bmatrix}
+    1 \\
+    0
+\end{bmatrix}
+e^{-t}
+\to 0
+\]
+作草图如下:\\
+观察, 对于解汇聚于0(此例题), 称为汇聚节点(渐近稳定点)\\
+若情况相反, 称为源节点(不稳定点).\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf11.3.1.png}
+    \caption{汇聚节点图}
+    \label{fig:cwf11.3.1}
+\end{figure}
+
+再看下eg:
+\[
+\begin{cases}
+    x' = -x + 3y \\
+    y' = 5x - 3y
+\end{cases} , 
+A =
+\begin{bmatrix}
+    -1 & 3 \\
+    5 & -3
+\end{bmatrix}
+\]
+解得:
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+=
+c_1
+\begin{bmatrix}
+    3 \\
+    -5
+\end{bmatrix}
+e^{-6t}
++
+c_2
+\begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix}
+e^{2t}
+\]
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf11.3.2.png}
+    \caption{不稳定点图}
+    \label{fig:cwf11.3.2}
+\end{figure}
+
+观察此解草图, 汇聚和源都不合适来形容, 仅称不稳定. \\
+补eg:
+\[
+\begin{cases}
+    x' = -x - y \\
+    y' = 2x - 3y
+\end{cases} , 
+A =
+\begin{bmatrix}
+    -1 & -1 \\
+    2 & -3
+\end{bmatrix}
+\]
+\[ \lambda^2 + 4 \lambda + 5 = 0 \]
+解得:
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+=
+c_1
+\left\{
+\begin{bmatrix}
+    a_1 \\
+    a_2
+\end{bmatrix}
+\cos t +
+\begin{bmatrix}
+    b_1 \\
+    b_2
+\end{bmatrix}
+\sin t
+\right\} 
+e^{-2t}
++
+c_2
+\ldots 
+\]
+显然, 此方程组图像有界.\\
+有如下定理:\\
+对下类方程:
+\[ A x^2 + B y^2 + C xy + D x + E y + F = 0 \]
+图像仅呈现 双曲线, 椭圆, 抛物线, 退化直线.\\
+其中 只有椭圆有界.
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf11.3.3.png}
+    \caption{螺旋图}
+    \label{fig:cwf11.3.3}
+\end{figure}
+
+其呈现螺旋汇聚现象(逆时针).

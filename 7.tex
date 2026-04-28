@@ -1,0 +1,83 @@
+\newpage
+
+\section{\huge \textcolor{blue}{一阶常系数线性方程}}
+
+补充完复数相关知识后, 继续回到一阶常系数线性方程
+{\Large  \[ y' + k y = q(t) \] }
+下引入新概念:
+\subsection{\large 输入-响应}
+\subsubsection{\large 概念}
+如上公式:\\
+输入: $q(t)$\\
+响应: $y(t) $ 的解\\
+以前文出现过的温度传导模型为例:
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.6\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc7.1.1.png}
+    \caption{传导模型}
+    \label{fig:cwffc7.1.1}
+\end{figure}
+
+$T_e$ 外部温度为输入, $T$ 内部温度变化受外部温度影响即为响应
+
+\subsubsection{\large 叠加原理}
+\begin{center}
+    \begin{tabular}{c}
+        $q_1(t) \longrightarrow  y_1(t)$ \\ 
+        $q_2(t) \longrightarrow  y_2(t)$   \\ \hline
+        $q_1(t) + q_2(t) \longrightarrow  y_1(t) + y_2(t)$ \\
+        $c q_1(t) \longrightarrow  c y_1(t)$
+    \end{tabular}
+\end{center}
+显然输入和响应是线性的
+\subsection{\large 三角实例}
+下以输入为三角函数为例:
+\[ y' + k y = k q_e(t) \]
+对物理输入 $q_e = \cos(\omega t) $, 求响应\\
+复化微积分:
+\[ e^{i\omega t} = \cos(\omega t) + i \sin(\omega t) \]
+\[\tilde{y'} + k \tilde{y} = k e^{i\omega t}\]
+其中 $\tilde{y}$ 包含复解, $\tilde{y} = y_1 +i y_2$\\
+现问题转化为:\\
+求 $\tilde{y}$, 取实部$y_1$, 即为原方程解\\
+积分因子: $e^{k t}$\\
+解得:
+\[  \tilde{y} = \frac{1}{1 + i \frac{\omega }{k}} e^{i\omega t} \]
+接下来取实部(有2种方法):
+\subsubsection{\large 极坐标转化}
+补充:\\
+若 $\alpha $ 为复数, 有下:
+\begin{enumerate}
+    \item  $\left\lvert \frac{1} {\alpha} \right\rvert  = \frac{1}{\left\lvert \alpha \right\rvert } $  
+    \item  $\arg(\frac{1} {\alpha}) + \arg (\alpha ) = 0 $
+\end{enumerate}
+
+由上2条, 即可求出:
+\[ \frac{1}{1 + i \frac{\omega }{k}} = \frac{1}{\sqrt{1 + (\frac{\omega }{k})^2} } e^{- i \phi } \]
+其中 $\arg (1 + i \frac{\omega }{k}) = \phi $
+\[ \therefore \hspace*{2em} \tilde{y} = \frac{1}{\sqrt{1 + (\frac{\omega}{k})^2}} e^{i(\omega t - \phi)} \]
+\[ y_1 = Re(\tilde{y}) = \frac{1}{\sqrt{1 + (\frac{\omega}{k})^2}} \cos(\omega t - \phi) \]
+其中$\phi = \arctan (\frac{\omega }{k })$
+
+
+\subsubsection{\large 笛卡尔坐标转化}
+\[ e^{i\omega t} = \cos(\omega t) + i \sin(\omega t) \]
+\[ \tilde{y} = \frac{1 - i \frac{\omega }{k}}{1 + (\frac{\omega }{k})^2} (\cos(\omega t) + i \sin(\omega t)) \]
+\[ y_1 = Re(\tilde{y}) = \frac{1}{1 + (\frac{\omega }{k})^2} (\cos(\omega t) + \frac{\omega }{k} \sin(\omega t))\]
+
+通过2种转化法得2种答案形式, 在正常观念中, 2值应相等
+, 事实也正是如此\\
+联系:\\
+显然, 发现符合三角函数里的辅助角公式:
+\[ a \cos\theta  + b \sin\theta = A \cos(\theta - \phi ) \]
+其中 $A = \sqrt{a^2 + b^2}$, $\phi = \arctan\frac{b}{a}$
+\subsection{\large 基本线性方程}
+\begin{enumerate}
+    \item $y' + k y = k q_e(t)$, $k > 0$
+    \item $y' + k y = q(t)$, $k > 0$
+    \item $y' + p(t) y = q(t)$
+\end{enumerate}
+以上是前文所涉及到的基本线性方程, 其$k$ 全保持大于$0$, 
+若$k < 0$, 前文所涉及的"暂态、稳态、输入、响应"概念不再适用, 
+但方程的解法不改变, 简单说即为解发散.

@@ -1,0 +1,408 @@
+\newpage
+
+\section{\huge \textcolor{blue}{\hspace*{0.2em}拉普拉斯}}
+\subsection{\LARGE \hspace*{0.1em}拉普拉斯变换引入}
+\subsubsection{\large 幂级数求和类似体}
+在介绍拉普拉斯变换之前, 观察幂级数求和:
+\[ \sum_{n=0}^{\infty} a_n x^n = A(x) \]
+为方便描述, 将 $a_n$ 改为 $a(n)$
+\[ \sum_{n=0}^{\infty} a(n) x^n = A(x) \]
+有如下:
+\begin{align*}
+   a(n) &\rightsquigarrow  A(x)  \\
+    1   &\rightsquigarrow  \frac{1}{1-x} \hspace*{0.2em},\hspace*{0.5em} \left\lvert x\right\rvert < 1 \\
+   \frac{1}{n!}  &\rightsquigarrow  e^{x}       
+\end{align*}
+了解, 求和时,取一个定义在非负整数上的
+离散函数 $\rightsquigarrow$ 连续函数\\
+若想按此想法构造一个连续的类似体\\
+取$n = 0, 1, 2, 3, ...$;  $t \to \infty $\\
+利用积分:
+\[ \int_0^\infty a(t) x^t dt = A(x) \]
+令$x^t = e^{t\ln x}$; $- s = \ln x$; $a(t) \to f(t)$
+\[\int_0^\infty f(t) e^{-st} dt = F(s) \]
+即构造出一个与幂函数求和的类似体\\
+观察发现这是一种输入 $'t'$ 却输出 $'s'$ 的变换\\[2em]
+与前文算子对比如下:
+\[ f(t) \longrightarrow |\text{变换}| \longrightarrow F(s) \]
+\[ f(t) \longrightarrow |\text{算子}| \longrightarrow g(s) \]
+幸运的是, 此变换也为线性变换, \\
+下介绍其线性前, 说明拉普拉斯变换的符号表达:
+\[ \mathcal{L} (f(t)) = F(s) \]
+或:
+\[ f(t) \rightsquigarrow F(s) \]
+\subsubsection{\large \hspace*{0.1em}拉普拉斯变换线性定律}
+如下:
+\begin{align*}
+   \mathcal{L} (f + g) &= F(s) + G(s)  \\
+                      &=  \mathcal{L}(f) + \mathcal{L}(g)  \\
+   \mathcal{L}(c f)    &= c \mathcal{L}(s)       
+\end{align*}
+\subsubsection{\large \hspace*{0.1em}各函数拉普拉斯变换及其规律}
+下引入常见的函数 $f(t)$, 观察拉普拉斯变换:
+\begin{align*}
+ 0 &\rightsquigarrow  0 \\
+ 1 &\rightsquigarrow  \frac{1}{s} \hspace*{0.3em} (s > 0) 
+\end{align*}
+证明:\\
+$f(t) = 0 $的结果显然, 下证明$f(t) = 1$:
+\begin{align*}
+   \int_{0}^{\infty} f(t) e^{-st} dt &= \int_{0}^{\infty} 1\cdot e^{-st} dt  \\
+   &=  \lim_{R \to \infty}  \int_{0}^{R} e^{-s t} dt \\
+   &=  \lim_{R \to \infty}  \left[ \frac{e^{-st}}{-s} \right]_0^R \\
+   &=  \lim_{R \to \infty}  \frac{e^{-st} - 1}{-s} \\
+   &= \frac{1}{s} \hspace*{1em} (s > 0)
+\end{align*}
+\hfill 证毕.\\
+下继续分析 $e^{at}$ 的拉普拉斯变换, 发觉难有切入点\\
+先考虑 $e^{at} f(t)$ 的拉普拉斯变换:
+\begin{align*}
+   \int_{0}^{\infty} e^{at} f(t) e^{-st} dt &= \int_{0}^{\infty} f(t) e^{-(s-a)t} dt \\
+   &= F(s-a)  \hspace*{1em} (s > a)
+\end{align*}
+所以, 令$f(t) = 1$, 即 $e^{at}$ 的拉普拉斯变换亦求得:
+\begin{align*}
+   e^{at} f(t) &\rightsquigarrow  F(s-a) \hspace*{0.3em} (s > a) \\
+   e^{at} &\rightsquigarrow  \frac{1}{s-a} \hspace*{0.3em} (s > a)
+\end{align*}
+观察, 发现关于了拉普拉斯变换规律:\\
+输入左乘一个指数, 将在输出转化为位移$a$的形式\\
+此也称为 拉普拉斯变换指数移位公式.\\[1em]
+现考虑输入为 $\sin t , \cos t $\\
+则从欧拉公式的逆运用切入, 需输入的域满足复数:
+\[ e^{(a+ib)t} \rightsquigarrow \frac{1}{s-(a+ib)}  \hspace*{0.3em} (s > a) \]
+现可继续探求, 利用:
+\[ \cos at = \frac{e^{at} + e^{-at}}{2} \]
+所以:
+\begin{align*}
+   \mathcal{L} (\cos at) &= \frac{1}{2} (\frac{1}{s-ai} + \frac{1}{s+ai}) \\
+   &= \frac{s}{s^2 + a^2}
+\end{align*}
+\hfill 即得.
+\[ \mathcal{L} (\cos at) = \frac{1}{2} (\frac{1}{s-ai} + \frac{1}{s+ai}) \]
+\[ \mathcal{L} (\sin at) = \frac{1}{2i} (\frac{1}{s-ai} - \frac{1}{s+ai}) \]\\[1em]
+到此继续探求多项式的拉普拉斯变换\\
+分析$t^n$即可
+\begin{align*}
+   \mathcal{L} (t^n) &= \int_{0}^{\infty} t^n e^{-st} dt  \\
+   &= \left[t^n \frac{e^{-st}}{-s}\right]_{0}^{\infty} - \int_{0}^{\infty} n t^{n-1} \frac{e^{-st}}{-s} dt\\
+   &= \frac{n}{s} \int_{0}^{\infty} t^{n-1} e^{-st} dt \\
+   &= \frac{n}{s} \mathcal{L} (t^{n-1})
+\end{align*}
+所以:
+\[ \mathcal{L}(t^n) = \frac{n}{s} \mathcal{L}(t^{n-1}) = \dots = \frac{n!}{s^n} \mathcal{L}(t^0) = \frac{n!}{s^{n+1}} \]
+
+\subsection{\LARGE \hspace*{0.1em}拉氏变换求线性ODE}
+\subsubsection{\large 拉氏变换存在条件}
+\[ f(t) \rightsquigarrow F(s) = \int_0^\infty f(t) e^{-st} dt \]
+对此等式, 观察知右侧积分为广义积分, 即并非恒收敛\\
+为了确保拉普拉斯变换存在, 需满足如下条件:\\
+$f(t)$ 具有"指数型", 即:
+\[ \left\lvert f(t)\right\rvert \leq c e^{k t} \hspace*{0.5em} (t \geq 0 , k > 0 , c > 0) \]
+代前文部分输入验证:
+\begin{align*}
+   \left\lvert \sin t \right\rvert &\leq 1 \cdot  e^{0 t} \\
+   \left\lvert  t^n \right\rvert &\leq M \cdot  e^{t} 
+\end{align*}
+均满足, 现在尝试输入不满足的$f(t)$
+\[ \frac{1}{t} \rightsquigarrow \int_{0}^{\infty} \frac{1}{t} e^{-st} dt  \hspace*{3em} \textcolor{red}{not} \]
+\[ e^{t^2}: \hspace*{0.5em}  e^{t^2} > e^{kt} \hspace*{3em} (t > k) \]
+上两类函数, 均不满足拉普拉斯变换存在条件, 现阶段不做讨论.
+
+\subsubsection{\large 拉氏变换求线性ODE}
+下正式尝试利用拉普拉斯变换求线性ODE:\\
+先展现具体流程:
+\[ y'' + A y' + B y = h(t)  \]
+需开始提供初始条件:
+\[ y(0) = y_0, \hspace*{0.5em} y'(0) = y'_0 \]
+先将$y(t) \rightsquigarrow Y(s) $ 结果会为代数方程:
+\[ Y(s) = \frac{p(s)}{q(s)}  \]
+经$\mathcal{L}^{-1}$ 得 $y = y(t)$, 下有:
+\begin{align*}
+   \mathcal{L}(f'(t) &= \int_0^\infty f'(t) e^{-st} dt \\
+   &= \left[e^{-st} f(t)\right]_0^\infty - \int_0^\infty f(t) (-s e^{-st}) dt  
+\end{align*}
+其中$\left[e^{-st} f(t)\right]_0^\infty = 0 - f(0)$, 所以
+\[ \mathcal{L}(f'(t) = s F(s) - f(0) \]
+对$y''(t)$ 有:
+\begin{align*}
+   f''(t) &= s \mathcal{L}(f'(t)) - f'(0) \\
+   &= s[s F(s) - f(0)] - f'(0) \\
+   &= s^2 F(s) - sf(0) - f'(0)
+\end{align*}
+综上:
+\begin{align*}
+   f'(t) &\rightsquigarrow s F(s) - f(0) \\
+   f''(t) &\rightsquigarrow s^2 F(s) - sf(0) - f'(0)
+\end{align*}
+将此些代入原方程即可解.\\[1em]
+eg1:\\
+$y'' - y = e^{-t}$; $y(0) = 1$, $y'(0) = 0$\\
+对左右侧进行拉普拉斯变换:
+\begin{align*}
+   s^2 Y - s - Y &= \frac{1}{s+1}\\
+   (s^2 - 1) Y &= \frac{1}{s+1} + s = \frac{s^2 + s + 1}{s+1}\\
+   Y &= \frac{s^2 + s + 1}{(s+1)^2(s-1)}\\
+    &= \frac{- 1/2}{(s+1)^2} + \frac{1/4}{s+1} + \frac{3/4}{s-1}
+\end{align*}
+经 $\mathcal{L}^{-1}$ 得:
+\[ - \frac{1}{2} t e^{-t} + \frac{1}{4} e^{-t} + \frac{3}{4} e^t \]
+其中 $- \frac{1}{2} t e^{-t}$ 为特解.
+
+\hfill 证毕.
+
+\subsection{\LARGE \hspace*{0.1em}卷积}
+下介绍较陌生的概念: 卷积  \\
+记号:
+\[ f(t) \ast g(t) \]
+若:
+\begin{align*}
+   F(s) &= \int_0^\infty f(t) e^{-st} dt \\
+   G(s) &= \int_0^\infty g(t) e^{-st} dt
+\end{align*} 
+有:
+\[ F(s) \ast G(s) = \int_0^\infty (f \ast g) e^{-st} dt \]
+现用熟悉的幂级数进行类比:
+\begin{align*}
+   F(x) = \sum_{n=0}^\infty a_n x^n \\
+   G(x) = \sum_{n=0}^\infty b_n x^n
+\end{align*}
+求:
+\[ F(x) G(x) = \sum_{n=0}^\infty c_n x^n \]
+思考:\\
+是否存在公式, 使得$c_n$与$a_n, b_n$产生联系?\\
+此答案即为卷积!\\
+公式如下:
+\[ f(t) \ast g(t) = \int_0^t f(u) g(t-u) du \]
+同时有性质:\\
+$f(t) \ast g(t) = g(t) \ast f(t)   \hspace*{0.5em} (F G = G F)$
+
+eg1:\\
+$t^2 \ast t$
+卷积:
+\begin{align*}
+   t^2 \ast t &= \int_0^\infty u^2 (t - u) du \\
+   &= \left[\frac{u^3}{3} t - \frac{u^4}{4}\right]_0^t \\
+   &= \frac{t^4}{3} - \frac{t^4}{4} \\
+   &= \frac{t^4}{12}
+\end{align*}
+拉普拉斯变换:
+\[ t^2 \rightsquigarrow  \frac{2}{s^3} \hspace*{1em}, \hspace*{1em}  t \rightsquigarrow  \frac{1}{s^2} \]
+\begin{align*}
+   \frac{2!}{s^3} \cdot \frac{1}{s^2} &= \frac{2!}{s^5} \\
+   \mathcal{L}^{-1}(\frac{2!}{s^5}) &= \frac{t^4}{12}
+\end{align*}
+特别的:
+\[ f(t) \ast 1 = \int_{0}^{t} f(u) \cdot 1 du = \int_{0}^{t} f(u) du \]
+运用后, 现简单证明此公式:
+\begin{align*}
+   F(s) G(s) &= \int_0^\infty f(u) e^{-su} du  \int_0^\infty g(v) e^{-sv} dv \\
+   &= \int_0^\infty \int_0^\infty f(u) g(v) e^{-s(u+v)} du dv
+\end{align*}
+令$t = u+v$, $v = t - u$
+有:
+\[ du dv = \frac{\partial(u,v)}{\partial(u,t)} du dt \]
+由:
+\[\left\{
+\begin{aligned}
+   u &= u  \\
+   v &= t - u
+\end{aligned}
+\right.\]
+得:
+\[ \mathcal{J} = 
+\begin{vmatrix}
+    1 & 0 \\
+    -1 & 1
+\end{vmatrix}
+= 1   \]
+所以:
+\begin{align*}
+   F(s) G(s) &= \int_0^\infty \int_0^t f(u) g(t-u) e^{-st} du dt \\
+   &= \int_0^\infty e^{-st} \int_0^t f(u) g(t-u) du dt \\
+   &= \int_0^\infty e^{-st} f(t) \ast g(t) dt
+\end{align*}
+\hfill 证毕.
+
+\newpage
+\subsection{\LARGE \hspace*{0.1em}拉氏变换处理不连续函数}
+在考虑拉普拉斯变换处理不连续函数时, 需介绍如下函数:\\
+单位阶跃函数$u(t)$:\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf10.4.1.png}
+    \caption{单位阶跃函数}
+    \label{fig:cwf10.4.1}
+\end{figure}
+
+其中可假设$u(0)$是未定义的\\
+下对此平移$a$, 得$u_a(t)$:\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf10.4.2.png}
+    \caption{a单位阶跃函数}
+    \label{fig:cwf10.4.2}
+\end{figure}
+
+即:
+\[ u_a(t) = u(t-a) \]
+变形, 单位方框函数$u_{ab}(t)$:\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf10.4.3.png}
+    \caption{单位方框函数}
+    \label{fig:cwf10.4.3}
+\end{figure}
+
+有:
+\[ u_{ab}(t) = u(t-a) - u(t-b) \]
+现用$u_{ab}(t)$对任意函数$f(t)$作用:\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf10.4.4.png}
+    \caption{单位方框函数作用}
+    \label{fig:cwf10.4.4}
+\end{figure}
+
+得:
+\[ g(t) = u_{ab}(t) f(t) \]
+观察$u(t)$的拉普拉斯变换:
+\[ \mathcal{L} (u(t)) = \int_0^\infty u(t) e^{-st} dt = \frac{1}{s}  \hspace*{0.5em} (s > 0) \]
+\[ \mathcal{L} \frac{1}{s} = ? \]
+对此, $\frac{1}{s}$ 的拉普拉斯逆变换过往常取为$1$; \\
+而现在有了更好的选择.\\[1em]
+规范化:\\
+此前拉普拉斯变换只关心定义域大于$0$区间, 
+由此带来了函数在区间外的不确定性:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf10.4.5.png}
+    \caption{唯一化}
+    \label{fig:cwf10.4.5}
+\end{figure}
+\[ f(t) \rightsquigarrow F(s) \]
+\[ \mathcal{L} (F(s)) = u(t) f(t) \]
+此前函数不唯一, 现规定无特殊说明, 定义外
+取 $0$ (唯一)\\
+而完成图像的构造只需乘以单位阶跃函数即可.\\[1em]
+观察平移对求拉普拉斯变换的影响:\\
+$ \mathcal{L}(f(t-a)) $  不存在利用$f(t)$
+来表达的拉普拉斯变换公式\\
+原因如下:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.4\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf10.4.6.png}
+    \caption{平移-拉普拉斯变换}
+    \label{fig:cwf10.4.6}
+\end{figure}
+
+为什么不可能将$f(t - a)$的拉普拉斯变换用$f(t)$
+的拉普拉斯变换表示?\\
+\textcolor{red}{$f(t)$ 在$t < 0$ 部分并未被拉普拉斯变换作用到!}\\
+当求$f(t)$ 的拉普拉斯变换时, 自动丢弃
+$t$为负值时的函数所有信息, 自然无法用$f(t) \longrightarrow f(t - a)$\\
+而为了解决此问题, 即利用前文引入的单位阶跃函数:\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf10.4.7.png}
+    \caption{平移-阶跃-拉普拉斯变换}
+    \label{fig:cwf10.4.7}
+\end{figure}
+
+有下:
+\[ u(t - a) f(t - a) \rightsquigarrow  e^{-sa} F(s) \]
+变式:
+\[ u(t - a) f(t) \rightsquigarrow  e^{-sa} \mathcal{L}(f(t + a)) \]
+称为$t$轴平移公式.\\
+证明:\\
+令$t_1 = t -a$
+\begin{align*}
+   \int_0^\infty e^{-st} u(t - a) f(t - a) dt &= \int_{-a}^\infty e^{-s(t_1 + a)} u(t_1) f(t) dt_1 \\
+   &= e^{-sa} \int_{-a}^\infty e^{-st_1} u(t_1) f(t_1) dt_1 \\
+   &= e^{-sa} \int_0^\infty e^{-st_1}  f(t_1) dt_1 \\
+   \intertext{$t_1$ 为哑变量，非关键，即依然是 $t$ 的拉普拉斯变换}
+   &= e^{-sa} F(s)
+\end{align*}
+\hfill 证毕.
+
+\subsection{\LARGE \hspace*{0.1em}狄拉克函数}
+利用拉普拉斯变换, 继续介绍狄拉克函数:\\
+引入单位脉冲:\\
+一个变化的力对系统作用一段时间\\
+脉冲函数:$f(t)$在一个时间区间上作用定义为:
+\[ \int_a^b f(t) dt \]
+特别地:\\
+若$f(t)$恒定, 则脉冲为:$F(b-a)$\\
+作单位脉冲图如下:\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf10.5.1.png}
+    \caption{单位脉冲}
+    \label{fig:cwf10.5.1}
+\end{figure}
+
+\[ y'' + y = \frac{1}{n} u_{0h}(t) \]
+现进行拉普拉斯变换:
+\[ \frac{1}{n} [u(t) - u(t-h)] \rightsquigarrow \frac{1}{n} [\frac{1}{s} - \frac{e^{-hs}}{s}] \]
+有:
+\[ \lim_{h \to 0}  \frac{1-e^{-hs}}{hs} = \lim_{u \to 0} \frac{1-e^{-u}}{u} = \lim_{u \to 0} e^{-u} = 1  \]
+即得:
+\[ \frac{1}{n} u_{0h}(t) \rightsquigarrow   \frac{1-e^{-hs}}{hs} \to 1  \hspace*{3em} h \to 0 \]
+现称此函数为狄拉克函数, 记为$\delta (t)$\\
+且总脉冲为$1$:
+\[
+   \int_{-\infty}^\infty \delta (t) dt = 1
+\]
+对此卷积:
+\[
+    f(t) \ast  \delta (t) \rightsquigarrow F(s)\cdot 1
+\]
+保持唯一性:
+\[ u(t) f(t) \ast  \delta (t) \rightsquigarrow F(s)\cdot 1 \]
+而:
+\[ u(t) f(t) \rightsquigarrow F(s) \]
+所以知:\\
+$\delta (t)$有类单位量性质\\
+为方便探究, 在$t=\frac{\pi}{2}$处施加冲量
+\[ y'' + y = A \delta (t-\frac{\pi}{2}) \]
+$y(0) = 1, y'(0) = 0$\\
+对方程两侧进行拉普拉斯变换:
+\begin{align*}
+   s^2 Y - s + Y &= A e^{-\frac{\pi}{2}s} \\
+   Y &= \frac{s + Ae^{-\frac{\pi}{2}s}}{s^2 + 1}
+\end{align*}
+解得:
+\[ y = \cos t + A u(t-\frac{\pi}{2}) \sin (t - \frac{\pi}{2}) \]
+综上:
+\[
+ y = \left\{
+\begin{aligned}
+   &\cos t   & 0 \leq t \leq \frac{\pi}{2}\\
+   &(1-A)\cos t  & t >  \frac{\pi}{2}
+\end{aligned}
+\right.
+\]
+对高阶(以二阶为例):
+\begin{align*}
+   y'' + ay' + by &= f(t) \\
+   s^2 Y + as Y + b Y &= F(s) \\
+   Y &= F(s) \frac{1}{s^2 + a s + b}
+\end{align*}
+其中记$w = \frac{1}{s^2 + a s + b}$为传递函数
+所以:
+\begin{align*}
+   y(t) &= f(t) \cdot w(t) \\
+   &= \int_0^t f(u) w(t-u) du
+\end{align*}
+即:\\
+\textcolor{red}{微分方程的解成功用定积分形式表示!}\\
+现仅需针对$w(t)$分析即可:
+\[ y'' + ay' + by = \delta  \]
+$y(0) = y'(0) = 0$, 且在$t=0$处
+\begin{align*}
+   s^2 Y + as Y + b Y &= 1 \\
+   Y &= \frac{1}{s^2 + a s + b}
+\end{align*}
+即:
+\[ y(t) = w(t) \]
+$w(t)$是系统静止时在时刻$0$受到单位冲量后的响应.

@@ -1,0 +1,117 @@
+\newpage
+\section{\huge \textcolor{blue}{一阶线性ODE}}
+\subsection{\LARGE 一阶线性ODE标准方程}
+对于如下方程形式:
+{\Large
+\begin{equation}
+a(x) y' + b(x) y = c(x)
+\end{equation}
+}
+我们称 $y$ 和 $y'$ 呈现出线性关系, 可类比如下:
+{\Large
+\begin{equation}
+a y_1 + b y_2 = c
+\end{equation}
+}
+特别地, 若$c=0$, 则称为齐次方程, 目前暂不考虑\\
+下对(10)式进行变形:\\ 
+同除$a(x)$, 
+并记$b(x)/a(x)=p(x)$, $c(x)/a(x)=q(x)$, 得:
+{\Large
+\begin{equation}
+y' + p(x) y = q(x)
+\end{equation}
+}
+同时能注意到, 部分教程使用如下方程:
+{\Large
+\begin{equation}
+y' = p(x) y + q(x)
+\end{equation}
+}
+此方程表达更突出"一阶", 为后续笔记的统一性
+和计算的便利, 不使用此形式
+
+\newpage
+\subsection{\LARGE 温度模型}
+
+下文列举一个实际例子(温度传导模型)来说明:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.6\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwffc3.1.1.png}
+    \caption{传导模型}
+    \label{fig:cwffc3.1.1}
+\end{figure}
+
+类似如图的温度传导模型, 我们能给出相关的牛顿定律:
+{\Large
+\begin{equation}
+\frac{dT}{dt} = k (T_e - T)
+\end{equation}
+}
+其中$k > 0$, $t = time$, $T = temperature$, 且有$T_e > T$, $T(0) = T_0$\\
+下将其写为标准方程(一般性的线性方程):
+{\Large
+\begin{equation}
+\frac{dT}{dt} + k T = k T_e
+\end{equation}
+}
+
+
+\subsection{\LARGE 解一阶线性方程}
+为解决上述模型的方程问题, 即需解决下式:
+{\Large
+\begin{equation}
+y' + p(x) y = q(x)
+\end{equation}
+}
+为此介绍如下方法:
+\subsubsection{\large 积分因子法}
+对方程两边同乘以一个函数$\mu(x)$, 得:
+{\Large
+\begin{equation}
+\mu(x) y' + \mu(x) p(x) y = \mu(x) q(x)
+\end{equation}
+}
+将等式左边变形为乘积求导形式:
+{\Large \[ (\mu(x) y)' = \mu(x) q(x) \]}
+现要使上式成立, 则需满足:
+{\Large \[ \mu'(x) = p(x) \mu(x) \]}
+即求:
+{\Large \[ \frac{\mu'(x)}{\mu(x)} = p(x) \]}
+解得:
+{\Large
+\begin{equation}
+\mu(x) = e^{\int p(x) dx}
+\end{equation}
+}
+现得到$\mu(x)$, 称为积分因子\\
+下用一道例题展示该方法:\\
+eg 3.1.1: \hspace*{6em} $xy' - y = x^3$\\
+\hspace*{2em}解
+{\begin{align*}
+    & \qquad y' - \frac{1}{x}y = x^2 \quad (x \neq 0) \\
+    & \qquad e^{-\ln x} = (e^{\ln x})^{-1} = \frac{1}{x} \\
+    & \qquad \therefore \frac{1}{x}y' - \frac{1}{x^2}y = x \\
+    & \qquad \left( \frac{1}{x} y \right)' = x \\
+    & \qquad \therefore \frac{1}{x} \cdot y = \frac{1}{2}x^2 + C \\
+    & \qquad \therefore y = \frac{1}{2}x^3 + Cx
+\end{align*}
+}
+了解积分因子法后, 我们再回到温度传导模型中, 解决$p(x)$为常数的情况:
+{\Large \[ \frac{dT}{dt} + k T = k T_e \]}
+则有$\mu(x)$为:
+{\Large \[ \mu(t) = e^{\int k dt} = e^{kt} \]}
+最后解得:
+{\Large
+\begin{equation}
+T = e^{-kt} \int k T_e e^{kt} dt + C e^{-kt}
+\end{equation}
+}
+此解称为温度传导的暂态解, 可用于预测物体温度随时间变化的情况, 
+当$t \to \infty$, 即物体温度趋近于环境温度时, 得稳态解:
+{\Large
+\begin{equation}
+T = e^{-kt} \int k T_e e^{kt} dt
+\end{equation}
+}
+
