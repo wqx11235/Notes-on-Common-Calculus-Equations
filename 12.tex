@@ -238,3 +238,312 @@ A^4 &= A^3 A = A A = I \\
 
 \subsection{\LARGE \hspace*{0.1em}方程组解耦}
 \subsubsection{\large 定理及性质}
+针对$n\times n$齐次方程组, 有
+\[\vec{X}' = A \vec{X} \]
+解法:
+\begin{enumerate}
+    \item 特征值 , 特征向量
+    \item $e^{At}\vec{X_0}$ , $e^{At}=\mathbb{X} \cdot \mathbb{X}(0)^{-1}$
+    \item 方程组解耦, 即本节内容
+\end{enumerate}
+eg:
+\[
+\begin{cases}
+    u=ax + by \\
+    v=cx + dy
+\end{cases}
+\hspace*{1em} \Rightarrow u,v
+\]
+若得:
+\[
+\begin{cases}
+    u' = \lambda_1 u \\
+    v' = \lambda_2 v
+\end{cases}
+\]
+即称为方程组解耦.\\
+耦合意味着,方程组右侧都出现x,y;而此时可分别解$u,v$ 即方程组被解耦.\\
+eg:
+\[
+\begin{cases}
+    1\cdot x' = c (y - x) \\
+    2\cdot y' = c (x - y)
+\end{cases}
+\]
+为演示方法,现令$c=2$, 得:
+\[
+\begin{cases}
+    x' = -2x + 2y  \\
+    y' = x - y
+\end{cases}
+\]
+令
+\[
+\begin{cases}
+    u = x + 2y \\
+    v = x - y
+\end{cases}
+\]
+代入,得
+\[
+\begin{cases}
+    u' = x' + 2y' = 0\\
+    v' = x' - y' = -3v
+\end{cases}
+\]
+\[
+\therefore u = c_1 , v = c_2 e^{-3t}
+\]
+解:
+\[
+\begin{cases}
+    x = \frac{1}{3}(u + 2v) = \frac{1}{3}(c_1 + 2c_2 e^{-3t}) \\
+    y = \frac{1}{3}(u - v) = \frac{1}{3}(c_1 - c_2 e^{-3t})
+\end{cases}
+\]
+\[
+\vec{X} = \frac{1}{3} c_1
+\begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix} +
+\frac{1}{3} c_2
+\begin{bmatrix}
+    2 \\
+    -1
+\end{bmatrix}
+e^{-3t}
+\]
+现进行一般化,需先明确解耦条件:\\
+特征值必须都是实数且完备的.\\
+eg:
+\[
+\begin{bmatrix}
+    u \\
+    v
+\end{bmatrix} =
+\begin{bmatrix}
+    a_1' & a_2' \\
+    b_1' & b_2'
+\end{bmatrix}
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}
+\]
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix}=
+\begin{bmatrix}
+    a_1 & a_2 \\
+    b_1 & b_2
+\end{bmatrix}
+\begin{bmatrix}
+    u \\
+    v
+\end{bmatrix}
+\]
+记$
+\begin{bmatrix}
+    a_1' & a_2' \\
+    b_1' & b_2'
+\end{bmatrix}$ 为$D$,解耦矩阵; 
+$\begin{bmatrix}
+    a_1 & a_2 \\
+    b_1 & b_2
+\end{bmatrix}$ 为$D^{-1}=E$\\
+\[ E =
+\begin{bmatrix}
+    \vec{\alpha}_1 & \vec{\alpha}_2
+\end{bmatrix}
+\]
+两列是两个特征向量\\
+代入$\vec{X}' = A \vec{X}$
+\[ A \vec{\alpha}_1 = \lambda_1 \vec{\alpha}_1 \]
+\begin{align*}
+    A E &= A [\vec{\alpha}_1 \hspace*{0.5em} \vec{\alpha}_2] \\
+    &= [A \vec{\alpha}_1 \hspace*{0.5em} A \vec{\alpha}_2] \\
+    &= [\lambda_1 \vec{\alpha}_1 \hspace*{0.5em} \lambda_2\vec{\alpha}_2] \\
+    &= [\vec{\alpha}_1 \hspace*{0.5em} \vec{\alpha}_2] 
+    \begin{bmatrix}
+        \lambda_1 & 0 \\
+        0 & \lambda_2
+    \end{bmatrix} \\
+    &= E
+    \begin{bmatrix}
+        \lambda_1 & 0 \\
+        0 & \lambda_2
+    \end{bmatrix}
+\end{align*}
+代替:
+\[ \vec{X}' = A \vec{X} \hspace*{1em} \vec{U}=
+\begin{bmatrix}
+    u \\
+    v
+\end{bmatrix} \]
+\[ \vec{X} = E \vec{U} \]
+\begin{align*}
+    E \vec{U}' &= A E \vec{U} \\
+    &= E
+    \begin{bmatrix}
+        \lambda_1 & 0 \\
+        0 & \lambda_2
+    \end{bmatrix} \vec{U} \\
+    \therefore 
+    \vec{U}' &= 
+    \begin{bmatrix}
+        \lambda_1 & 0 \\
+        0 & \lambda_2
+    \end{bmatrix} \vec{U}
+\end{align*}
+解耦得;
+\[
+\begin{cases}
+    u' = \lambda_1 u \\
+    v' = \lambda_2 v
+\end{cases}\hspace*{1em}
+ \therefore
+\begin{cases}
+    u = c_1 e^{\lambda_1 t} \\
+    v = c_2 e^{\lambda_2 t}
+\end{cases}
+\]
+
+\newpage
+\subsection{\LARGE \hspace*{0.1em}非线性自治方程组及作图}
+\subsubsection{\large 定理及性质}
+
+现有非线性方程组:
+\[
+\begin{cases}
+    x' = f(x,y) \\
+    y' = g(x,y)
+\end{cases}
+\]
+如何画轨迹?\\
+eg:非线性摆:\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf12.4.1.png}
+    \caption{非线性摆}
+    \label{fig:cwf12.4.1}
+\end{figure}
+
+\begin{align*}
+    m\vec{a} & = \vec{F} \\
+    m l \theta '' & = - mg\sin\theta - c_1 l \theta' \\
+    \theta '' + \frac{c_1}{m}\theta' &+ \frac{g}{l}\sin\theta  = 0 \\
+    \theta '' + c\theta' &+ k\sin\theta  = 0 \\
+    \theta ' &= \omega \\
+    \omega ' &= - k\sin\theta - c\omega 
+\end{align*}
+令$c=1, k=2$, 得
+\[
+\begin{cases}
+    \theta' = \omega \\
+    \omega' = - 2\sin\theta -\omega  
+\end{cases}
+\]
+1.观察方程组的临界点$(x_0,y_0)$
+\[
+\begin{cases}
+    f(x_0,y_0)=0 \\
+    g(x_0,y_0)=0
+\end{cases}
+\]
+联立方程:
+\[
+\begin{cases}
+    \omega = 0 \\
+    - 2\sin\theta -\omega = 0 
+\end{cases} \Rightarrow 
+\begin{cases}
+    \theta = k\pi \\
+    \omega = 0
+\end{cases} \hspace*{0.5em} k \in \mathbb{Z} 
+\]
+而由物理现象实际作限制 $\theta = 0 , \pi$\\
+临界点:$(0,0)$ 稳定点 ; $(\pi,0)$ 不稳定点\\[1em]
+2.对每个临界点附近线性化方程组\\
+在$(0,0)$附近线性化方程:
+\[
+\begin{cases}
+    \theta' = \omega \\
+    \omega' = - 2\theta -\omega  
+\end{cases}
+\hspace*{0.5em}
+\begin{bmatrix}
+    0 & 1 \\
+    -2 & -1
+\end{bmatrix}
+\]
+\[ \lambda^2 + \lambda + 2 = 0 \]
+\[ \lambda = \frac{-1 \pm \sqrt{-7}}{2} \]
+因为$\lambda=-\frac{1}{2} + b i$,$Re < 0$, 图像将呈螺旋汇聚\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf12.4.2.png}
+    \caption{螺旋汇聚}
+    \label{fig:cwf12.4.2}
+\end{figure}
+
+在$(\pi,0)$附近线性化方程:
+\[
+\mathcal{J} = 
+\begin{bmatrix}
+    f_x & f_y \\
+    g_x & g_y
+\end{bmatrix}_0
+\]
+利用雅可比矩阵在$(x_0,y_0)$处形成线性化方程组.\\
+在$(\pi,0)$处:
+\[
+\mathcal{J} = 
+\begin{bmatrix}
+    0 & 1 \\
+    -2\cos\theta & -1
+\end{bmatrix}_{(\pi,0)} =
+\begin{bmatrix}
+    0 & 1 \\
+    2 & -1
+\end{bmatrix}
+\]
+\[ \lambda^2 + \lambda - 2 = 0 \]
+\[ \lambda = 1 , -2 \]
+$\lambda = 1$, $-a_1+a_2 = 0$, 
+$\begin{bmatrix}
+    1 \\
+    1
+\end{bmatrix}e^t$ \\
+$\lambda = -2$, $2a_1 + a_2 = 0$, 
+$\begin{bmatrix}
+    1 \\
+    -2
+\end{bmatrix}e^{-2t}$\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf12.4.3.png}
+    \caption{源节点发散}
+    \label{fig:cwf12.4.3}
+\end{figure}
+
+\newpage
+3.构成大图\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=1\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf12.4.4.png}
+    \caption{区域性变化}
+    \label{fig:cwf12.4.4}
+\end{figure}
+
+参考图:
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=1\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf12.4.5.png}
+    \caption{参考图}
+    \label{fig:cwf12.4.5}
+\end{figure}
+
+至此,图像大致趋势绘制完成.

@@ -87,3 +87,5 @@
 \contentsline {subsubsection}{\numberline {\large 12.2.1}\large 定理及性质}{93}{subsubsection.12.2.1}%
 \contentsline {subsection}{\numberline {\Large 12.3}\LARGE \hspace *{0.1em}方程组解耦}{96}{subsection.12.3}%
 \contentsline {subsubsection}{\numberline {\large 12.3.1}\large 定理及性质}{96}{subsubsection.12.3.1}%
+\contentsline {subsection}{\numberline {\Large 12.4}\LARGE \hspace *{0.1em}非线性自治方程组及作图}{99}{subsection.12.4}%
+\contentsline {subsubsection}{\numberline {\large 12.4.1}\large 定理及性质}{99}{subsubsection.12.4.1}%
