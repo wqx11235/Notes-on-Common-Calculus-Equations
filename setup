@@ -15,7 +15,7 @@
 \title{\heiti \Huge 常微分方程笔记\\[3cm]}   % [3cm]在题目后增加垂直间距
 
 
-\author{\kaishu \Large 记录人：吴奇鑫\\ 邮箱:\texttt{1601430145@qq.com}\\ \\开始时间：2025 年 12 月 14 日}
+\author{\kaishu \Large 记录人：\\ 邮箱:\texttt{1601430145@qq.com}\\ \\开始时间：2025 年 12 月 14 日}
 \date{更新时间：\today}
 % 隐藏超链接框框和颜色
 \hypersetup{

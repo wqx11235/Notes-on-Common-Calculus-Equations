@@ -89,3 +89,9 @@
 \contentsline {subsubsection}{\numberline {\large 12.3.1}\large 定理及性质}{96}{subsubsection.12.3.1}%
 \contentsline {subsection}{\numberline {\Large 12.4}\LARGE \hspace *{0.1em}非线性自治方程组及作图}{99}{subsection.12.4}%
 \contentsline {subsubsection}{\numberline {\large 12.4.1}\large 定理及性质}{99}{subsubsection.12.4.1}%
+\contentsline {section}{\numberline {\textcolor {blue}{\LARGE 13}}\huge \textcolor {blue}{\hspace *{0.2em}极限环及方程组关系}}{103}{section.13}%
+\contentsline {subsection}{\numberline {\Large 13.1}\LARGE \hspace *{0.1em}极限环}{103}{subsection.13.1}%
+\contentsline {subsubsection}{\numberline {\large 13.1.1}\large 极限环的定义}{103}{subsubsection.13.1.1}%
+\contentsline {subsubsection}{\numberline {\large 13.1.2}\large 极限环的存在性}{105}{subsubsection.13.1.2}%
+\contentsline {subsection}{\numberline {\Large 13.2}\LARGE \hspace *{0.1em}非线性方程组和一阶方程的关系}{107}{subsection.13.2}%
+\contentsline {subsubsection}{\numberline {\large 13.2.1}\large 简单介绍}{107}{subsubsection.13.2.1}%

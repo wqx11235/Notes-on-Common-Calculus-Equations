@@ -1,0 +1,285 @@
+\newpage
+
+\section{\huge \textcolor{blue}{\hspace*{0.2em}极限环及方程组关系}}
+\subsection{\LARGE \hspace*{0.1em}极限环}
+\subsubsection{\large 极限环的定义}
+对如下方程组:
+\[
+\begin{cases}
+    x' = f(x,y) \\
+    y' = g(x,y)
+\end{cases}
+\]
+几何: 先建立速度场
+\[ \vec{F} = f\hat{i} + g\hat{j} \]
+正常有起始点的曲线\\
+从解的角度:\\
+常数解 $
+\begin{cases}
+    x(t) = x_0 \\
+    y(t) = y_0
+\end{cases}
+$\\[0.3em]
+从场的角度:\\
+$ \vec{F} = \vec{0} $ , 场为零处 或 那无速度向量
+\[ f(x_0,y_0) = 0, g(x_0,y_0) = 0 \]
+现在考虑轨迹的另一种可能"不停止的运动", 称闭合轨迹.\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.3\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf13.1.1.png}
+    \caption{闭合轨迹}
+    \label{fig:cwf13.1.1}
+\end{figure}
+
+eg: 表示一个周期性地回到原始状态的方程组:
+\[
+\begin{cases}
+    x' = y \\
+    y' = -x
+\end{cases} \hspace*{1em} 
+\begin{bmatrix}
+    0 & 1 \\
+    -1 & 0
+\end{bmatrix} \hspace*{1em}
+\lambda = \pm i
+\]
+\[
+\vec{X} = c_1 
+\begin{bmatrix}
+    \cos t \\
+    -\sin t
+\end{bmatrix} + c_2
+\begin{bmatrix}
+    \sin t \\
+    \cos t
+\end{bmatrix}
+\]
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.4\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf13.1.2.png}
+    \caption{周期闭合轨迹}
+    \label{fig:cwf13.1.2}
+\end{figure}
+
+现可进一步探讨 极限环:\\
+极限环 $=$ 闭合轨迹 $+$ 孤立的, 稳定的性质.\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf13.1.3.png}
+    \caption{极限环}
+    \label{fig:cwf13.1.3}
+\end{figure}
+
+图中每条轨迹都不会相交, 但会趋近极限环, 
+若存在不稳定点, 曲线为远离极限环而非靠近, 而不稳定点不为极限环, 仅为闭合曲线.\\
+
+\subsubsection{\large 极限环的存在性}
+给定一个方程组, 如何判断是否存在极限环?\\
+先讨论如何判断一个方程组不存在极限环.\\
+\textbf{本迪克松准则}\\
+假设:D是平面的一个区域, 计算向量场散度
+\[
+div \vec{F} = f_x + g_y
+\]
+若$ div \vec{F} \neq  0 $ , 则区域D内不存在极限环, 甚至不存在闭合轨迹.\\
+证明:\\
+反证法: 假设存在闭合轨迹$C \subset D$
+\[
+\because \vec{F} \hat{n} \equiv 0 
+\]
+\begin{align*}
+    \therefore 
+    \oint _C \vec{F} \cdot \hat{n} ds & = 0 \\
+    \iint _D div \vec{F} dA & > 0 \hspace*{0.5em}or < 0
+\end{align*}
+矛盾!\\[0.5em]
+eg:
+\[
+\begin{cases}
+    x' = x^2 + y^2 + 1 \\
+    y' = x^2 - y^2 
+\end{cases}
+\]
+\[
+div \vec{F} = 2x - 2y 
+\]
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.3\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf13.2.1.png}
+    \caption{极限环例子}
+    \label{fig:cwf13.2.1}
+\end{figure}
+
+如图情况, 无法作结论.\\
+\textbf{临界点准则}
+\[
+\begin{cases}
+D \longrightarrow \text{xy平面} \\
+C \longrightarrow  \text{闭合轨迹}  \hspace*{0.5em} C \subset D
+\end{cases}
+\Rightarrow \text{在C内至少存在一个临界点.}\\
+\]
+利用逆否命题:\\
+如果D不存在临界点, 则不存在闭合轨迹, 故不存在极限环.\\
+显然 $x' = x^2 + y^2 + 1$ 不存在零值\\
+所以这例题不存在极限环.\\[0.5em]
+下介绍一个未完全解决的问题:
+\[
+\begin{cases}
+    x' = ax^2 + bxy + cy^2 + dx + ey + f \\
+    y' = a'x^2 + b'xy + c'y^2 + d'x + e'y + f'
+\end{cases}
+\]
+一个二次方程组, 其系数为实数, 最多能有多少个极限环?\\
+目前已知的最大数量为4, 但尚未证明是否存在5个或更多的极限环.
+
+\newpage
+\subsection{\LARGE \hspace*{0.1em}非线性方程组和一阶方程的关系}
+\subsubsection{\large 简单介绍}
+考虑如下方程组:
+\[
+\begin{cases}
+    \frac{dx}{dt} = f(x,y) \\
+    \frac{dy}{dt} = g(x,y)
+\end{cases}
+\]
+几何: 速度场
+\[ \vec{F} = f\hat{i} + g\hat{j} 
+\hspace*{1em}
+\begin{cases}
+    x = x(t) \\
+    y = y(t)
+\end{cases}
+\]
+消去t, 得:
+\[
+\frac{dy}{dx} = \frac{g(x,y)}{f(x,y)}
+\]
+为方向场.\\
+期望: $y=f(x)$, 显式解;\\
+现象: $h(x,y) = 0$, 隐式解.\\
+eg:
+\[
+\begin{cases}
+    x' = y \\
+    y' = -x
+\end{cases}
+\]
+解:
+\[
+\begin{bmatrix}
+    x \\
+    y
+\end{bmatrix} = c_1
+\begin{bmatrix}
+    \cos t \\
+    -\sin t
+\end{bmatrix} + c_2
+\begin{bmatrix}
+    \sin t \\
+    \cos t
+\end{bmatrix}
+\]
+消去t, 得:
+\[
+\frac{dy}{dx} = \frac{-x}{y}
+\] 
+\[ x^2 + y^2 = c \]\\[0.5em]
+eg:
+\[
+\begin{cases}
+    x' = -ax + bxy \\
+    y' = cy - dxy
+\end{cases}
+\]
+1. 找临界点
+\[
+\begin{cases}
+    x(-a + by) = 0 \\
+    y(c - dx) = 0
+\end{cases}
+\]
+解:
+\[
+\begin{cases}
+    x = 0 \\
+    y = 0 
+\end{cases}
+\hspace*{0.5em} or 
+\begin{cases}
+    x = \frac{c}{d} \\
+    y = \frac{a}{b}
+\end{cases}
+\]
+2. 线性化\\
+对$(0,0)$线性化:
+\[
+\begin{bmatrix}
+    -a & 0 \\
+    0 & c
+\end{bmatrix}
+\hspace*{0.5em}
+\lambda = -a, c
+\]
+鞍面\\
+为简化计算, 设$a=b=c=d=1$
+\[
+\begin{cases}
+    x' = -x + xy \\
+    y' = y - xy
+\end{cases}
+\]
+\[
+\mathcal{J} =
+\begin{bmatrix}
+    -1 + y & x \\
+    -y & 1 - x
+\end{bmatrix}
+\]
+对$(\frac{c}{d},\frac{a}{b})$, 现$(1,1)$线性化:
+\[
+\mathcal{J}_{(1,1)} =
+\begin{bmatrix}
+    0 & 1 \\
+    -1 & 0
+\end{bmatrix}
+\]
+线性化的方程组是一个中心(一个个紧挨着的圆组成)\\[0.5em]
+\textbf{沃尔泰拉法则}
+\[
+\begin{cases}
+    x' = -x + xy \\
+    y' = y - xy
+\end{cases}
+\]
+3.消去$t$
+\[
+\frac{dy}{dx} = \frac{y(1-x)}{x(-1+y)}
+\]
+\begin{align*}
+    \frac{y-1}{y} dy & = \frac{1-x}{x} dx \\
+    y-\ln y & = \ln x - x + c_1 \\
+    \frac{e^y}{y} & = \frac{x}{e^x} + c_2\\
+    \frac{x}{e^x}\cdot \frac{y}{e^y} & = C
+\end{align*}
+可视为等值线:
+\[
+x e^{-x}\cdot y e^{-y} = h(x,y)
+\]
+最后:
+\[
+\begin{cases}
+    x' = -ax + bxy - kx = -(a+k)x + bxy \\
+    y' = cy - dxy - ky = (c-k)y - dxy
+\end{cases}
+\]
+旧临界点$(\frac{c}{d},\frac{a}{b})$, 新临界点$(\frac{c-k}{d},\frac{a+k}{b})$\\
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.5\textwidth]{C:/Users/37/Desktop/Notes on Common Calculus Equations/Notes and pictures/cwf13.2.2.png}
+    \caption{临界点变化}
+    \label{fig:cwf13.2.2}
+\end{figure}
+
+新的临界点显现了某一值降低的现象, 平衡偏差, 此现象称作沃尔泰拉法则.\\
+至此本文主脉络已全部完成, 其中有意思的章节将额外补充.
